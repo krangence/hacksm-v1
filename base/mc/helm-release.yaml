@@ -1,0 +1,33 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: rr5
+  namespace: mc
+spec:
+  chart:
+    git: https://github.com/helm/charts
+    ref: master
+    path: stable/minecraft
+  values:
+    # ref: https://github.com/helm/charts/blob/master/stable/minecraft/values.yaml
+    resources:
+      requests:
+        memory: 8Gi
+        cpu: "1"
+    livenessProbe:
+      initialDelaySeconds: 300
+      periodSeconds: 10
+    readinessProbe:
+      initialDelaySeconds: 300
+      periodSeconds: 10
+    minecraftServer:
+      eula: "TRUE"
+      version: "1.12.2"
+      type: "FORGE"
+      forgeVersion: "14.23.5.2847"
+      motd: "RR5 Staging - K8s"
+      maxtickTime: -1
+      memory: 8G
+    extraEnv:
+      GENERIC_PACK: "https://cdn.hrzn.studio/rr5-server-staging.zip"
+      GENERIC_PACK_STRIP_DIRS: '"0"'
