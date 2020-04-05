@@ -5,11 +5,11 @@ metadata:
   namespace: mc
 spec:
   chart:
-    git: https://github.com/helm/charts
+    git: https://github.com/hrznstudio/mc-helm-chart
     ref: master
-    path: stable/minecraft
+    path: /
   values:
-    # ref: https://github.com/helm/charts/blob/master/stable/minecraft/values.yaml
+    # ref: https://github.com/hrznstudio/mc-helm-chart/blob/master/values.yaml
     resources:
       requests:
         memory: 8Gi
@@ -28,6 +28,8 @@ spec:
       motd: "RR5 Staging - K8s"
       maxtickTime: -1
       memory: 8G
+      annotations:
+        external-dns.alpha.kubernetes.io/hostname: rr5.mc.playhrzn.com
     extraEnv:
       GENERIC_PACK: "https://cdn.hrzn.studio/rr5-server-staging.zip"
       GENERIC_PACK_STRIP_DIRS: '"0"'
