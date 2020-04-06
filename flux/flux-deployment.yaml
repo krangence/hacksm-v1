@@ -150,6 +150,7 @@ spec:
         - --git-label=flux
         - --git-user=Flux
         - --git-email=accounts@hrznstudio.com
+        - --git-poll-interval=30s
 
         # Include these two to enable git commit signing
         # - --git-gpg-key-import=/root/gpg-import
