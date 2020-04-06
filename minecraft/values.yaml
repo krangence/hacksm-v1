@@ -156,9 +156,12 @@ minecraftServer:
   cloudCommander:
     # If you enable this, make SURE to change your password below.
     enabled: false
+    username: "admin"
     password: "CHANGEME!"
     image: coderaiser/cloudcmd
     imageTag: latest-alpine
+    enableConsole: false
+    enableTerminal: false
     serviceType: LoadBalancer
     loadBalancerIP:
     # loadBalancerSourceRanges: []
