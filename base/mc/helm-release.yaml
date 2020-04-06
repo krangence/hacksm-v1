@@ -38,5 +38,5 @@ spec:
         serviceType: NodePort
     extraEnv:
       GENERIC_PACK: "https://cdn.hrzn.studio/rr5-server-staging.zip"
-      GENERIC_PACK_STRIP_DIRS: '"0"'
-      OVERRIDE_SERVER_PROPERTIES: '"1"'
+      GENERIC_PACK_STRIP_DIRS: "0"
+      OVERRIDE_SERVER_PROPERTIES: "1"
