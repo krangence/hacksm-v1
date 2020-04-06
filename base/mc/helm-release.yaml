@@ -30,6 +30,12 @@ spec:
       memory: 8G
       annotations:
         external-dns.alpha.kubernetes.io/hostname: rr5.mc.playhrzn.com
+      rcon:
+        enabled: true
+      cloudCommander:
+        enabled: true
+        port: 80
+        serviceType: NodePort
     extraEnv:
       GENERIC_PACK: "https://cdn.hrzn.studio/rr5-server-staging.zip"
       GENERIC_PACK_STRIP_DIRS: '"0"'
