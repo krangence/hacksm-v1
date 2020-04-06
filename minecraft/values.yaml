@@ -151,7 +151,20 @@ minecraftServer:
     # loadBalancerSourceRanges: []
     ## Set the externalTrafficPolicy in the Service to either Cluster or Local
     # externalTrafficPolicy: Cluster
-
+    annotations: {}
+  
+  cloudCommander:
+    # If you enable this, make SURE to change your password below.
+    enabled: false
+    password: "CHANGEME!"
+    image: coderaiser/cloudcmd
+    imageTag: latest-alpine
+    serviceType: LoadBalancer
+    loadBalancerIP:
+    # loadBalancerSourceRanges: []
+    ## Set the externalTrafficPolicy in the Service to either Cluster or Local
+    # externalTrafficPolicy: Cluster
+    annotations: {}
 
   query:
     # If you enable this, your server will be "published" to Gamespy

@@ -1,0 +1,42 @@
+{{- if default "" .Values.minecraftServer.cloudCommander.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ template "minecraft.fullname" . }}-cloudcmd"
+  {{- if .Values.minecraftServer.cloudCommander.annotations }}
+  annotations:
+    {{- range $key, $value := .Values.minecraftServer.cloudCommander.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
+  labels:
+    app: {{ template "minecraft.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+{{- if (or (eq .Values.minecraftServer.cloudCommander.serviceType "ClusterIP") (empty .Values.minecraftServer.cloudCommander.serviceType)) }}
+  type: ClusterIP
+{{- else if eq .Values.minecraftServer.cloudCommander.serviceType "LoadBalancer" }}
+  type: {{ .Values.minecraftServer.cloudCommander.serviceType }}
+  {{- if .Values.minecraftServer.cloudCommander.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.minecraftServer.cloudCommander.loadBalancerIP }}
+  {{- end }}
+  {{- if .Values.minecraftServer.cloudCommander.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges:
+{{ toYaml .Values.minecraftServer.cloudCommander.loadBalancerSourceRanges | indent 4 }}
+  {{- end -}}
+{{- else }}
+  type: {{ .Values.minecraftServer.cloudCommander.serviceType }}
+{{- end }}
+  {{- if .Values.minecraftServer.cloudCommander.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ .Values.minecraftServer.cloudCommander.externalTrafficPolicy }}
+  {{- end }}
+  ports:
+  - name: cloudcmd
+    port: {{ .Values.minecraftServer.cloudCommander.port }}
+    targetPort: cloudcmd
+    protocol: TCP
+  selector:
+    app: {{ template "minecraft.fullname" . }}
+{{- end }}

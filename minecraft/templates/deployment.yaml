@@ -197,6 +197,30 @@ spec:
         volumeMounts:
         - name: datadir
           mountPath: /data
+      {{- if .Values.minecraftServer.cloudCommander.enabled }}
+      - name: "{{ template "minecraft.fullname" . }}-cloudcmd"
+        image: "{{ .Values.minecraftServer.cloudCommander.image }}:{{ .Values.minecraftServer.cloudCommander.imageTag }}"
+        env:
+          - name: CLOUDCMD_ROOT
+            value: "/data"
+          - name: CLOUDCMD_NAME
+            value: {{ template "minecraft.fullname" . }}
+        resources:
+          limits: { memory: "150Mi", cpu: "100m" }
+        ports:
+          - name: cloudcmd
+            containerPort: 8000
+            protocol: TCP
+        volumeMounts:
+          - name: datadir
+            mountPath: /data
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      {{- end }}
       volumes:
       - name: datadir
       {{- if .Values.persistence.dataDir.enabled }}
