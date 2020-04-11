@@ -232,9 +232,11 @@ spec:
           - name: datadir
             mountPath: /data
         readinessProbe:
-          httpGet:
-            path: /
-            port: 8000
+          exec:
+            command:
+              - /bin/sh
+              - -c
+              - "wget --spider --header \"Authorization: Basic $(echo -n ${CLOUDCMD_USERNAME}:${CLOUDCMD_PASSWORD} | base64)\" http://127.0.0.1:8000"
           initialDelaySeconds: 5
           periodSeconds: 5
       {{- end }}
