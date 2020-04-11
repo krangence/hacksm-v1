@@ -32,6 +32,8 @@ spec:
         external-dns.alpha.kubernetes.io/hostname: rr5.mc.playhrzn.com
       rcon:
         enabled: true
+        annotations:
+          external-dns.alpha.kubernetes.io/hostname: rr5-rcon.mc.playhrzn.com
       cloudCommander:
         enabled: true
         port: 80
