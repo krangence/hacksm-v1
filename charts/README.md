@@ -2,14 +2,6 @@
 
 Applications, provided by [Horizon Studio](https://hrznstudio.com), ready to launch on Kubernetes using [Kubernetes Helm](https://github.com/helm/helm).
 
-## TL;DR
-
-```bash
-$ helm repo add hrzn https://github.com/hrznstudio/charts
-$ helm search repo hrzn
-$ helm install my-release hrzn/<chart>
-```
-
 ## Before you begin
 
 ### Setup a Kubernetes Cluster
@@ -22,24 +14,18 @@ Helm is a tool for managing Kubernetes charts. Charts are packages of pre-config
 
 To install Helm, refer to the [Helm install guide](https://github.com/helm/helm#install) and ensure that the `helm` binary is in the `PATH` of your shell.
 
-### Add Repo
-
-The following command allows you to download and install all the charts from this repository:
-
-```bash
-$ helm repo add hrzn https://github.com/hrznstudio/charts
-```
-
 ### Using Helm
 
 Once you have installed the Helm client, you can deploy a Horizon Studio Helm Chart into a Kubernetes cluster.
 
 Please refer to the [Quick Start guide](https://github.com/helm/helm/blob/master/docs/quickstart.md) if you wish to get running in just a few commands, otherwise the [Using Helm Guide](https://github.com/helm/helm/blob/master/docs/using_helm.md) provides detailed instructions on how to use the Helm client to manage packages on your Kubernetes cluster.
 
-Useful Helm Client Commands:
-* View available charts: `helm search repo`
-* Install a chart: `helm install my-release hrzn/<package-name>`
-* Upgrade your application: `helm upgrade`
+As an example, the following command allows you to download and install the `minecraft` chart from this repository:
+
+```bash
+$ git clone https://github.com/hrznstudio/playhrzn-k8s
+$ helm install ./playhrzn-k8s/charts/minecraft
+```
 
 # License
 

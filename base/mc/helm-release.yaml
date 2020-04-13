@@ -5,11 +5,11 @@ metadata:
   namespace: mc
 spec:
   chart:
-    git: https://github.com/hrznstudio/mc-helm-chart
+    git: git@github.com:HRZNStudio/playhrzn-k8s
     ref: master
-    path: /
+    path: charts/minecraft
   values:
-    # ref: https://github.com/hrznstudio/mc-helm-chart/blob/master/values.yaml
+    # ref: charts/minecraft/values.yaml
     resources:
       requests:
         memory: 8Gi
