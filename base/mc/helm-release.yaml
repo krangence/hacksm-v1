@@ -37,6 +37,7 @@ spec:
       cloudCommander:
         enabled: true
         port: 80
+        imageTag: 14.3.10-alpine
         serviceType: NodePort
     extraEnv:
       GENERIC_PACK: "https://cdn.hrzn.studio/rr5-server-staging.zip"
