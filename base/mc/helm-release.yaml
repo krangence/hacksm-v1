@@ -34,6 +34,12 @@ spec:
         enabled: true
         annotations:
           external-dns.alpha.kubernetes.io/hostname: rr5-rcon.mc.playhrzn.com
+      rconWebAdmin:
+        enabled: true 
+        image: docker.io/cwlf/rcon@sha256
+        imageTag: e6d0d325f9686c00f8b4b50afd9ef7a03a5bf0c305e7567db008d8679163c6b1
+        websocketUrlSsl: "wss://rr5-rwa.mc.playhrzn.com:4327"
+        serviceType: NodePort
       cloudCommander:
         enabled: true
         port: 80

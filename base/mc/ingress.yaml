@@ -7,6 +7,7 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/success-codes: '401'
     external-dns.alpha.kubernetes.io/hostname: rr5-files.mc.playhrzn.com
 spec:
   rules:
@@ -16,3 +17,45 @@ spec:
         backend:
           serviceName: mc-rr5-minecraft-cloudcmd
           servicePort: 80
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mc-rr5-minecraft-rcon-web
+  namespace: mc
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/group.name: rwa
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:521397258504:certificate/30948eb5-f96e-423d-8eec-cb26cb459de6
+    external-dns.alpha.kubernetes.io/hostname: rr5-rwa.mc.playhrzn.com
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: mc-rr5-minecraft-rcon-web-admin
+          servicePort: 4326
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: mc-rr5-minecraft-rcon-ws
+  namespace: mc
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":4327}]'
+    alb.ingress.kubernetes.io/group.name: rwa
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:521397258504:certificate/30948eb5-f96e-423d-8eec-cb26cb459de6
+    external-dns.alpha.kubernetes.io/hostname: rr5-rwa.mc.playhrzn.com
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /*
+        backend:
+          serviceName: mc-rr5-minecraft-rcon-web-admin
+          servicePort: 4327

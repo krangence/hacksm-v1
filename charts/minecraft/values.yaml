@@ -153,6 +153,26 @@ minecraftServer:
     # externalTrafficPolicy: Cluster
     annotations: {}
   
+  rconWebAdmin:
+    # If you enable this, make SURE to change your password below.
+    enabled: false
+    username: "admin"
+    password: "CHANGEME!"
+    image: itzg/rcon
+    imageTag: latest
+    restrictCommands:
+    restrictWidgets:
+    readOnlyWidgetOptions: false
+    admin: false
+    websocketUrlSsl:
+    websocketUrl:
+    serviceType: LoadBalancer
+    loadBalancerIP:
+    # loadBalancerSourceRanges: []
+    ## Set the externalTrafficPolicy in the Service to either Cluster or Local
+    # externalTrafficPolicy: Cluster
+    annotations: {}
+
   cloudCommander:
     # If you enable this, make SURE to change your password below.
     enabled: false

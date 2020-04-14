@@ -1,0 +1,46 @@
+{{- if default "" .Values.minecraftServer.rconWebAdmin.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ template "minecraft.fullname" . }}-rcon-web-admin"
+  {{- if .Values.minecraftServer.rconWebAdmin.annotations }}
+  annotations:
+    {{- range $key, $value := .Values.minecraftServer.rconWebAdmin.annotations }}
+    {{ $key }}: {{ $value | quote }}
+    {{- end }}
+  {{- end }}
+  labels:
+    app: {{ template "minecraft.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+spec:
+{{- if (or (eq .Values.minecraftServer.rconWebAdmin.serviceType "ClusterIP") (empty .Values.minecraftServer.rconWebAdmin.serviceType)) }}
+  type: ClusterIP
+{{- else if eq .Values.minecraftServer.rconWebAdmin.serviceType "LoadBalancer" }}
+  type: {{ .Values.minecraftServer.rconWebAdmin.serviceType }}
+  {{- if .Values.minecraftServer.rconWebAdmin.loadBalancerIP }}
+  loadBalancerIP: {{ .Values.minecraftServer.rconWebAdmin.loadBalancerIP }}
+  {{- end }}
+  {{- if .Values.minecraftServer.rconWebAdmin.loadBalancerSourceRanges }}
+  loadBalancerSourceRanges:
+{{ toYaml .Values.minecraftServer.rconWebAdmin.loadBalancerSourceRanges | indent 4 }}
+  {{- end -}}
+{{- else }}
+  type: {{ .Values.minecraftServer.rconWebAdmin.serviceType }}
+{{- end }}
+  {{- if .Values.minecraftServer.rconWebAdmin.externalTrafficPolicy }}
+  externalTrafficPolicy: {{ .Values.minecraftServer.rconWebAdmin.externalTrafficPolicy }}
+  {{- end }}
+  ports:
+  - name: rcon-web
+    port: 4326
+    targetPort: rcon-web
+    protocol: TCP
+  - name: rcon-ws
+    port: 4327
+    targetPort: rcon-ws
+    protocol: TCP
+  selector:
+    app: {{ template "minecraft.fullname" . }}
+{{- end }}

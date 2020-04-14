@@ -197,40 +197,90 @@ spec:
         volumeMounts:
         - name: datadir
           mountPath: /data
+      {{- if .Values.minecraftServer.rconWebAdmin.enabled }}
+      - name: "{{ template "minecraft.fullname" . }}-rcon-web-admin"
+        image: "{{ .Values.minecraftServer.rconWebAdmin.image }}:{{ .Values.minecraftServer.rconWebAdmin.imageTag }}"
+        env:
+        - name: RWA_USERNAME
+          value: {{ .Values.minecraftServer.rconWebAdmin.username | quote }}
+        - name: RWA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "minecraft.fullname" . }}
+              key: rcon-web-admin-password
+        - name: RWA_RESTRICT_COMMANDS
+          value: {{ .Values.minecraftServer.rconWebAdmin.restrictCommands | quote }}
+        - name: RWA_RESTRICT_WIDGETS
+          value: {{ .Values.minecraftServer.rconWebAdmin.restrictWidgets | quote }}
+        - name: RWA_READ_ONLY_WIDGET_OPTIONS
+          value: {{ .Values.minecraftServer.rconWebAdmin.readOnlyWidgetOptions | quote }}
+        - name: RWA_ADMIN
+          value: {{ .Values.minecraftServer.rconWebAdmin.admin | quote }}
+        - name: RWA_GAME
+          value: "minecraft"
+        - name: RWA_SERVER_NAME
+          value: {{ template "minecraft.fullname" . }}
+        - name: RWA_RCON_PORT
+          value: "25575"
+        - name: RWA_RCON_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "minecraft.fullname" . }}
+              key: rcon-password
+        - name: RWA_WEBSOCKET_URL_SSL
+          value: {{ .Values.minecraftServer.rconWebAdmin.websocketUrlSsl | quote }}
+        - name: RWA_WEBSOCKET_URL
+          value: {{ .Values.minecraftServer.rconWebAdmin.websocketUrl | quote }}
+        resources:
+          limits: { memory: "150Mi", cpu: "100m" }
+        ports:
+        - name: rcon-web
+          containerPort: 4326
+          protocol: TCP
+        - name: rcon-ws
+          containerPort: 4327
+          protocol: TCP
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 4326
+          initialDelaySeconds: 5
+          periodSeconds: 5
+      {{- end }}
       {{- if .Values.minecraftServer.cloudCommander.enabled }}
       - name: "{{ template "minecraft.fullname" . }}-cloudcmd"
         image: "{{ .Values.minecraftServer.cloudCommander.image }}:{{ .Values.minecraftServer.cloudCommander.imageTag }}"
         env:
-          - name: CLOUDCMD_ROOT
-            value: "/data"
-          - name: CLOUDCMD_CONTACT
-            value: "false"
-          - name: CLOUDCMD_NAME
-            value: {{ template "minecraft.fullname" . }}
-          - name: CLOUDCMD_AUTH
-            value: {{ .Values.minecraftServer.cloudCommander.auth | quote }}
-          - name: CLOUDCMD_USERNAME
-            value: {{ .Values.minecraftServer.cloudCommander.username | quote }}
-          - name: CLOUDCMD_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: {{ template "minecraft.fullname" . }}
-                key: cloudcmd-password
-          - name: CLOUDCMD_TERMINAL
-            value: {{ .Values.minecraftServer.cloudCommander.enableTerminal | quote }}
-          - name: CLOUDCMD_CONSOLE
-            value: {{ .Values.minecraftServer.cloudCommander.enableConsole | quote }}
-          - name: CLOUDCMD_CONFIG_DIALOG
-            value: {{ .Values.minecraftServer.cloudCommander.enableConfigDialog | quote }}
+        - name: CLOUDCMD_ROOT
+          value: "/data"
+        - name: CLOUDCMD_CONTACT
+          value: "false"
+        - name: CLOUDCMD_NAME
+          value: {{ template "minecraft.fullname" . }}
+        - name: CLOUDCMD_AUTH
+          value: {{ .Values.minecraftServer.cloudCommander.auth | quote }}
+        - name: CLOUDCMD_USERNAME
+          value: {{ .Values.minecraftServer.cloudCommander.username | quote }}
+        - name: CLOUDCMD_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: {{ template "minecraft.fullname" . }}
+              key: cloudcmd-password
+        - name: CLOUDCMD_TERMINAL
+          value: {{ .Values.minecraftServer.cloudCommander.enableTerminal | quote }}
+        - name: CLOUDCMD_CONSOLE
+          value: {{ .Values.minecraftServer.cloudCommander.enableConsole | quote }}
+        - name: CLOUDCMD_CONFIG_DIALOG
+          value: {{ .Values.minecraftServer.cloudCommander.enableConfigDialog | quote }}
         resources:
           limits: { memory: "150Mi", cpu: "100m" }
         ports:
-          - name: cloudcmd
-            containerPort: 8000
-            protocol: TCP
+        - name: cloudcmd
+          containerPort: 8000
+          protocol: TCP
         volumeMounts:
-          - name: datadir
-            mountPath: /data
+        - name: datadir
+          mountPath: /data
         readinessProbe:
           exec:
             command:
