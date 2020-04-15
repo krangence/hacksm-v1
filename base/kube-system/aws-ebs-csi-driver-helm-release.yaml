@@ -1,0 +1,15 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: aws-ebs-csi-driver
+  namespace: kube-system
+spec:
+  chart:
+    git: git@github.com:kubernetes-sigs/aws-ebs-csi-driver.git
+    ref: master
+    path: aws-ebs-csi-driver
+  values:
+    # ref: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/aws-ebs-csi-driver/values.yaml
+    enableVolumeScheduling: true
+    enableVolumeResizing: true
+    enableVolumeSnapshot: true
