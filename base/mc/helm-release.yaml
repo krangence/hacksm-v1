@@ -32,8 +32,7 @@ spec:
         external-dns.alpha.kubernetes.io/hostname: rr5.mc.playhrzn.com
       rcon:
         enabled: true
-        annotations:
-          external-dns.alpha.kubernetes.io/hostname: rr5-rcon.mc.playhrzn.com
+        serviceType: NodePort
       rconWebAdmin:
         enabled: true 
         image: docker.io/cwlf/rcon@sha256
@@ -53,3 +52,4 @@ spec:
       dataDir:
         enabled: true
         Size: 5Gi
+      storageClass: ebs-sc
