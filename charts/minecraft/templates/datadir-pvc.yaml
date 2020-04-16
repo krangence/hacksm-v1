@@ -24,7 +24,10 @@ spec:
 {{- if (eq "-" .Values.persistence.storageClass) }}
   storageClassName: ""
 {{- else }}
-  storageClassName: "{{ .Values.persistence.storageClass }}"
+  storageClassName: {{ .Values.persistence.storageClass | quote }}
 {{- end }}
+{{- end }}
+{{- if .Values.persistence.volumeName }}
+  volumeName: {{ .Values.persistence.volumeName | quote }}
 {{- end }}
 {{- end -}}
