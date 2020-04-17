@@ -133,7 +133,11 @@ spec:
         - name: MODE
           value: {{ .Values.minecraftServer.gameMode | quote }}
         - name: MOTD
+        {{- if .Values.minecraftServer.motd }}
           value: {{ .Values.minecraftServer.motd | quote }}
+        {{- else }}
+          value: {{ template "minecraft.fullname" . | quote }}
+        {{- end }}
         - name: PVP
           value: {{ .Values.minecraftServer.pvp | quote }}
         - name: LEVEL_TYPE

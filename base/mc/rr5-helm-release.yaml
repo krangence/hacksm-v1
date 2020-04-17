@@ -26,7 +26,6 @@ spec:
       type: "FORGE"
       forgeVersion: "14.23.5.2847"
       maxWorldSize: 29999984
-      motd: "RR5 Staging - K8s"
       maxtickTime: -1
       memory: 8G
       annotations:
