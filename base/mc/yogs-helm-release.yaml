@@ -10,6 +10,20 @@ spec:
     path: charts/minecraft
   values:
     # ref: charts/minecraft/values.yaml
+    affinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - mc-yogs-minecraft
+            - key: app
+              operator: NotIn
+              values:
+              - mc-rr5-minecraft
+          topologyKey: "kubernetes.io/hostname"
     resources:
       requests:
         memory: 8Gi
@@ -23,7 +37,7 @@ spec:
     minecraftServer:
       eula: "TRUE"
       version: "1.12.2"
-      type: "PAPER"
+      type: "FORGE"
       forgeVersion: "14.23.5.2847"
       maxWorldSize: 29999984
       maxtickTime: -1
@@ -77,4 +91,4 @@ spec:
         enabled: true
         Size: 5Gi
       storageClass: ebs-sc
-      #volumeName:
+      volumeName: pvc-d0d01d32-bf54-4339-8272-80190ecd186e

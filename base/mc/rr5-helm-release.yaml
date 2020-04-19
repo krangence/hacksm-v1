@@ -10,6 +10,20 @@ spec:
     path: charts/minecraft
   values:
     # ref: charts/minecraft/values.yaml
+    affinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+        - labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - mc-rr5-minecraft
+            - key: app
+              operator: NotIn
+              values:
+              - mc-yogs-minecraft
+          topologyKey: "kubernetes.io/hostname"
     resources:
       requests:
         memory: 8Gi

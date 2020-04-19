@@ -136,7 +136,7 @@ spec:
         {{- if .Values.minecraftServer.motd }}
           value: {{ .Values.minecraftServer.motd | quote }}
         {{- else }}
-          value: {{ template "minecraft.fullname" . | quote }}
+          value: "{{ template "minecraft.fullname" . }}"
         {{- end }}
         - name: PVP
           value: {{ .Values.minecraftServer.pvp | quote }}
