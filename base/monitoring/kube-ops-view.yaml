@@ -1,0 +1,15 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kube-ops-view
+  namespace: monitoring
+spec:
+  releaseName: kube-ops-view
+  chart:
+    repository: https://kubernetes-charts.storage.googleapis.com/
+    name: kube-ops-view
+    version: 1.1.4
+  values:
+    rbac:
+      create: true
