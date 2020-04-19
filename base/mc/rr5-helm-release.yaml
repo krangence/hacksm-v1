@@ -39,11 +39,35 @@ spec:
         imageTag: e6d0d325f9686c00f8b4b50afd9ef7a03a5bf0c305e7567db008d8679163c6b1
         websocketUrlSsl: "wss://rr5-rwa.mc.playhrzn.com:4327"
         serviceType: NodePort
+        ingress:
+          enabled: true
+          sslRedirect: true
+          annotations:
+            kubernetes.io/ingress.class: alb
+            alb.ingress.kubernetes.io/scheme: internet-facing
+            alb.ingress.kubernetes.io/group.name: rr5-rwa
+            alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:521397258504:certificate/30948eb5-f96e-423d-8eec-cb26cb459de6
+            external-dns.alpha.kubernetes.io/hostname: rr5-rwa.mc.playhrzn.com
+          webAnnotations:
+            alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}, {"HTTPS":443}]'
+            alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+          websocketAnnotations:
+            alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":4327}]'
       cloudCommander:
         enabled: true
-        port: 80
         imageTag: 14.3.10-alpine
         serviceType: NodePort
+        ingress:
+          enabled: true
+          sslRedirect: true
+          annotations:
+            kubernetes.io/ingress.class: alb
+            alb.ingress.kubernetes.io/scheme: internet-facing
+            alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}, {"HTTPS":443}]'
+            alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+            alb.ingress.kubernetes.io/success-codes: '401'
+            alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:521397258504:certificate/30948eb5-f96e-423d-8eec-cb26cb459de6
+            external-dns.alpha.kubernetes.io/hostname: rr5-files.mc.playhrzn.com
     extraEnv:
       GENERIC_PACK: "https://cdn.hrzn.studio/rr5-server-staging.zip"
       GENERIC_PACK_STRIP_DIRS: "0"

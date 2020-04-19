@@ -172,11 +172,17 @@ minecraftServer:
     ## Set the externalTrafficPolicy in the Service to either Cluster or Local
     # externalTrafficPolicy: Cluster
     annotations: {}
+    ingress:
+      enabled: false
+      annotations: {}
+      webAnnotations: {}
+      websocketAnnotations: {}
 
   cloudCommander:
     # If you enable this, make SURE to change your password below.
     enabled: false
     auth: true
+    port: 80
     username: "admin"
     password: "CHANGEME!"
     image: coderaiser/cloudcmd
@@ -190,6 +196,11 @@ minecraftServer:
     ## Set the externalTrafficPolicy in the Service to either Cluster or Local
     # externalTrafficPolicy: Cluster
     annotations: {}
+    ingress:
+      enabled: false
+      annotations: {}
+      webAnnotations: {}
+      websocketAnnotations: {}
 
   query:
     # If you enable this, your server will be "published" to Gamespy
