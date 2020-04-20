@@ -1,0 +1,12 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: forcastle
+  namespace: forecastle
+spec:
+  releaseName: forecastle
+  chart:
+    git: git@github.com:stakater/Forecastle.git
+    ref: master
+    path: deployments/kubernetes/chart/forecastle
