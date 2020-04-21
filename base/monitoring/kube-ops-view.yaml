@@ -13,3 +13,9 @@ spec:
   values:
     rbac:
       create: true
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+        forecastle.stakater.com/expose: "true"
+        external-dns.alpha.kubernetes.io/hostname: ops.mc.playhrzn.com
