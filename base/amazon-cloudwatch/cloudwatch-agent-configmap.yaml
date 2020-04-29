@@ -8,7 +8,7 @@ data:
       "logs": {
         "metrics_collected": {
           "kubernetes": {
-            "cluster_name": "playhrzn-dev",
+            "cluster_name": "kaygee-dev",
             "metrics_collection_interval": 60
           }
         },

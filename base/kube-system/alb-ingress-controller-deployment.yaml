@@ -19,6 +19,6 @@ spec:
         - name: alb-ingress-controller
           args:
             - --ingress-class=alb
-            - --cluster-name=playhrzn-dev
+            - --cluster-name=kaygee-dev
           image: docker.io/amazon/aws-alb-ingress-controller:v1.2.0-alpha.1
       serviceAccountName: alb-ingress-controller
