@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flux
+  namespace: flux
+spec:
+  template:
+    spec:
+      containers:
+        - name: flux
+          args:
+            - --ssh-keygen-dir=/var/fluxd/keygen
+            - --git-url=git@github.com:HRZNStudio/playhrzn-k8s.git
+            - --git-label=flux-sync
+            - --git-email=accounts@hrznstudio.com
+            - --git-poll-interval=30s
+            - --git-poll-interval=30s
+            - --sync-garbage-collection
+            - --manifest-generation=true
+            - --listen-metrics=:3031
