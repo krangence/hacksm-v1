@@ -9,4 +9,4 @@ steps:
   args: [ct, lint, --all, --debug, --chart-dirs, charts]
 
 - name: garethr/kubeval:0.15.0
-  args: [-d, 'base,flux', -i, '.flux.yaml,cloudbuild.yaml,kustomization.yaml,patch.yaml']
+  args: [-d, 'base,flux', -i, '.flux.yaml,cloudbuild.yaml,kustomization.yaml,patch.yaml,^*.-crd.yaml$', --skip-kinds, HelmRelease]
