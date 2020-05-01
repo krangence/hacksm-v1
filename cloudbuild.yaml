@@ -5,8 +5,11 @@ steps:
 - name: gcr.io/cloud-builders/git
   args: [remote, add, origin, git@github.com:HRZNStudio/playhrzn-k8s.git]
 
-- name: 'quay.io/helmpack/chart-testing:v2.4.1'
+- name: quay.io/helmpack/chart-testing:v2.4.1
   args: [ct, lint, --all, --debug, --chart-dirs, charts]
 
 - name: garethr/kubeval:0.15.0
   args: [-d, 'base,flux', -i, '.flux.yaml,cloudbuild.yaml,kustomization.yaml,patch.yaml,^*.-crd.yaml$', --skip-kinds, HelmRelease]
+
+- name: cytopia/yamllint:1.20
+  args: ['.']
