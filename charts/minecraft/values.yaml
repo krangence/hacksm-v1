@@ -109,7 +109,7 @@ minecraftServer:
   # One of: creative, survival, adventure, spectator
   gameMode: survival
   # Message of the Day
-  #motd: "Welcome to Minecraft on Kubernetes!"
+  # motd: "Welcome to Minecraft on Kubernetes!"
   # If true, enable player-vs-player damage.
   pvp: false
   # One of: DEFAULT, FLAT, LARGEBIOMES, AMPLIFIED, CUSTOMIZED
@@ -152,7 +152,7 @@ minecraftServer:
     ## Set the externalTrafficPolicy in the Service to either Cluster or Local
     # externalTrafficPolicy: Cluster
     annotations: {}
-  
+
   rconWebAdmin:
     # If you enable this, make SURE to change your password below.
     enabled: false
