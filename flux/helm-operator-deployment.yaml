@@ -25,34 +25,34 @@ spec:
             secretName: flux-git-deploy
             defaultMode: 0400
       containers:
-      - name: flux-helm-operator
-        # There are no ":latest" images for helm-operator. Find the most recent
-        # release or image version at https://hub.docker.com/r/fluxcd/helm-operator/tags
-        # and replace the tag here.
-        image: docker.io/fluxcd/helm-operator:1.0.1
-        imagePullPolicy: IfNotPresent
-        ports:
-        - name: http
-          containerPort: 3030
-        livenessProbe:
-          httpGet:
-            port: 3030
-            path: /healthz
-          initialDelaySeconds: 1
-          timeoutSeconds: 5
-        readinessProbe:
-          httpGet:
-            port: 3030
-            path: /healthz
-          initialDelaySeconds: 1
-          timeoutSeconds: 5
-        resources:
-          requests:
-            cpu: 50m
-            memory: 64Mi
-        volumeMounts:
-          - name: git-key
-            mountPath: /etc/fluxd/ssh
-        args:
-        - --tiller-namespace=kube-system
-        - --enabled-helm-versions=v3
+        - name: flux-helm-operator
+          # There are no ":latest" images for helm-operator. Find the most recent
+          # release or image version at https://hub.docker.com/r/fluxcd/helm-operator/tags
+          # and replace the tag here.
+          image: docker.io/fluxcd/helm-operator:1.0.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3030
+          livenessProbe:
+            httpGet:
+              port: 3030
+              path: /healthz
+            initialDelaySeconds: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              port: 3030
+              path: /healthz
+            initialDelaySeconds: 1
+            timeoutSeconds: 5
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+          volumeMounts:
+            - name: git-key
+              mountPath: /etc/fluxd/ssh
+          args:
+            - --tiller-namespace=kube-system
+            - --enabled-helm-versions=v3

@@ -1,4 +1,5 @@
 {{- if .Values.minecraftServer.cloudCommander.ingress.enabled -}}
+---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -18,14 +19,14 @@ spec:
   rules:
   - http:
       paths:
-      {{- if .Values.minecraftServer.rconWebAdmin.ingress.sslRedirect }}
-      - path: /*
-        backend:
-          serviceName: ssl-redirect
-          servicePort: use-annotation
-      {{- end }}
-      - path: /*
-        backend:
-          serviceName: "{{ template "minecraft.fullname" . }}-cloudcmd"
-          servicePort: {{ .Values.minecraftServer.cloudCommander.port }}
+        {{- if .Values.minecraftServer.rconWebAdmin.ingress.sslRedirect }}
+        - path: /*
+          backend:
+            serviceName: ssl-redirect
+            servicePort: use-annotation
+        {{- end }}
+        - path: /*
+          backend:
+            serviceName: "{{ template "minecraft.fullname" . }}-cloudcmd"
+            servicePort: {{ .Values.minecraftServer.cloudCommander.port }}
 {{- end -}}

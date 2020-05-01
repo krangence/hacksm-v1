@@ -1,5 +1,6 @@
+---
 bases:
-- github.com/fluxcd/flux/deploy?ref=1.19.0
-#- github.com/fluxcd/helm-operator/deploy?ref=v1.0.1
+  - github.com/fluxcd/flux/deploy?ref=1.19.0
+# - github.com/fluxcd/helm-operator/deploy?ref=v1.0.1 # https://github.com/fluxcd/flux/issues/2988
 patchesStrategicMerge:
-- patch.yaml
+  - patch.yaml

@@ -17,13 +17,13 @@ spec:
         - name: cloudwatch-agent
           image: amazon/cloudwatch-agent:latest
           imagePullPolicy: Always
-          #ports:
-          #  - containerPort: 8125
-          #    hostPort: 8125
-          #    protocol: UDP
+          # ports:
+          #   - containerPort: 8125
+          #     hostPort: 8125
+          #     protocol: UDP
           resources:
             limits:
-              cpu:  200m
+              cpu: 200m
               memory: 200Mi
             requests:
               cpu: 200m

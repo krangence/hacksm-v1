@@ -1,4 +1,5 @@
 {{- if default "" .Values.minecraftServer.cloudCommander.enabled }}
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -33,10 +34,10 @@ spec:
   externalTrafficPolicy: {{ .Values.minecraftServer.cloudCommander.externalTrafficPolicy }}
   {{- end }}
   ports:
-  - name: cloudcmd
-    port: {{ .Values.minecraftServer.cloudCommander.port }}
-    targetPort: cloudcmd
-    protocol: TCP
+    - name: cloudcmd
+      port: {{ .Values.minecraftServer.cloudCommander.port }}
+      targetPort: cloudcmd
+      protocol: TCP
   selector:
     app: {{ template "minecraft.fullname" . }}
 {{- end }}

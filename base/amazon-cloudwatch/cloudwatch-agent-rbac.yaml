@@ -29,7 +29,7 @@ rules:
   - apiGroups: [""]
     resources: ["configmaps"]
     resourceNames: ["cwagent-clusterleader"]
-    verbs: ["get","update"]
+    verbs: ["get", "update"]
 
 ---
 kind: ClusterRoleBinding

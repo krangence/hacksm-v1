@@ -10,7 +10,7 @@ spec:
     listKind: HelmReleaseList
     plural: helmreleases
     shortNames:
-    - hr
+      - hr
   scope: Namespaced
   additionalPrinterColumns:
     - JSONPath: .status.releaseName
@@ -173,45 +173,45 @@ spec:
                         description: If set, successful retrieval of the values file is no longer mandatory
                         type: boolean
                 oneOf:
-                - required: ['configMapKeyRef']
-                - required: ['secretKeyRef']
-                - required: ['externalSourceRef']
-                - required: ['chartFileRef']
+                  - required: ['configMapKeyRef']
+                  - required: ['secretKeyRef']
+                  - required: ['externalSourceRef']
+                  - required: ['chartFileRef']
             values:
               description: content of values.yaml
               type: object
             chart:
               oneOf:
-              - required: ['git', 'path']
-                properties:
-                  git:
-                    description: Git URL e.g. git@github.com:org/repo
-                    type: string
-                    format: git # not defined by OAS
-                  path:
-                    description: Path inside the git repository where the Helm chart is
-                    type: string
-                  ref:
-                    description: Git branch, defaults to master
-                    type: string
-                  skipDepUpdate:
-                    description: If set, does not run 'dep' update (assume requirements.yaml is already fulfilled)
-                    type: boolean
-              - required: ['repository', 'name', 'version']
-                properties:
-                  repository:
-                    description: Helm repository URL
-                    type: string
-                    format: url # not defined by OAS
-                  name:
-                    description: Helm chart name
-                    type: string
-                  version:
-                    description: Helm chart version
-                    type: string
-                    format: semver # not defined by OAS
-                  chartPullSecret:
-                    properties:
-                      name:
-                        description: Helm repository basic auth (not implemented)
-                        type: string
+                - required: ['git', 'path']
+                  properties:
+                    git:
+                      description: Git URL e.g. git@github.com:org/repo
+                      type: string
+                      format: git
+                    path:
+                      description: Path inside the git repository where the Helm chart is
+                      type: string
+                    ref:
+                      description: Git branch, defaults to master
+                      type: string
+                    skipDepUpdate:
+                      description: If set, does not run 'dep' update (assume requirements.yaml is already fulfilled)
+                      type: boolean
+                - required: ['repository', 'name', 'version']
+                  properties:
+                    repository:
+                      description: Helm repository URL
+                      type: string
+                      format: url
+                    name:
+                      description: Helm chart name
+                      type: string
+                    version:
+                      description: Helm chart version
+                      type: string
+                      format: semver
+                    chartPullSecret:
+                      properties:
+                        name:
+                          description: Helm repository basic auth (not implemented)
+                          type: string

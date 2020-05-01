@@ -1,3 +1,4 @@
+---
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
@@ -13,17 +14,17 @@ spec:
     affinity:
       podAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
-        - labelSelector:
-            matchExpressions:
-            - key: app
-              operator: In
-              values:
-              - mc-rr5-minecraft
-            - key: app
-              operator: NotIn
-              values:
-              - mc-yogs-minecraft
-          topologyKey: "kubernetes.io/hostname"
+          - labelSelector:
+              matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                    - mc-rr5-minecraft
+                - key: app
+                  operator: NotIn
+                  values:
+                    - mc-yogs-minecraft
+            topologyKey: "kubernetes.io/hostname"
     resources:
       requests:
         memory: 8Gi
@@ -48,7 +49,7 @@ spec:
         enabled: true
         serviceType: NodePort
       rconWebAdmin:
-        enabled: true 
+        enabled: true
         image: docker.io/cwlf/rcon@sha256
         imageTag: e6d0d325f9686c00f8b4b50afd9ef7a03a5bf0c305e7567db008d8679163c6b1
         websocketUrlSsl: "wss://rr5-rwa.mc.playhrzn.com:4327"
