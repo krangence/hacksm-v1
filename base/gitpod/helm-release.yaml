@@ -10,11 +10,9 @@ spec:
     repository: https://charts.gitpod.io
     name: gitpod
     version: 0.3.0
-    values:
-      components:
-        proxy:
-          serviceType: "NodePort"
-    valuesFrom:
-    - secretKeyRef:
-        name: gitpod
-        key: values.yaml
+  values:
+    hostname: code.hacksm.net
+   # valuesFrom:
+   # - secretKeyRef:
+   #     name: gitpod
+   #     key: values.yaml
