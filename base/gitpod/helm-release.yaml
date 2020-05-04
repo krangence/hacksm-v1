@@ -1,0 +1,20 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: gitpod
+  namespace: gitpod
+spec:
+  releaseName: gitpod
+  chart:
+    repository: https://charts.gitpod.io
+    name: gitpod
+    version: 0.3.0
+    values:
+      components:
+        proxy:
+          serviceType: "NodePort"
+    valuesFrom:
+    - secretKeyRef:
+        name: gitpod
+        key: values.yaml
