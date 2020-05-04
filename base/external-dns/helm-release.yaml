@@ -7,6 +7,6 @@ metadata:
 spec:
   releaseName: external-dns
   chart:
-    git: https://github.com/bitnami/charts
-    ref: master
-    path: bitnami/external-dns
+    repository: https://charts.bitnami.com/bitnami
+    name: external-dns
+    version: 2.22.1

@@ -2,5 +2,50 @@
   "extends": ["config:base"],
   "kubernetes": {
     "fileMatch": ["\\.yaml$"]
-  }
+  },
+  "regexManagers": [
+    {
+      "fileMatch": ["\\.yaml$"],
+      "matchStrings": [
+        "chart:\n *repository: (?<repository>.*?)\n *name: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "helm"
+    },
+    {
+      "fileMatch": ["\\.yaml$"],
+      "matchStrings": [
+        "chart:\n *git: git@github.com:(?<depName>.*?).git\n *ref: (?<currentValue>.*?)\n"
+      ],
+      "datasourceTemplate": "github-tags"
+    }
+  ],
+  "packageRules": [
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "sealed-secrets",
+        "kube-ops-view",
+        "metrics-server",
+        "prometheus-operator"
+      ],
+      "registryUrls": ["https://kubernetes-charts.storage.googleapis.com/"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "ingress-nginx"
+      ],
+      "registryUrls": ["https://kubernetes.github.io/ingress-nginx"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "external-dns"
+      ],
+      "registryUrls": ["https://charts.bitnami.com/bitnami"]
+    }
+  ]
 }
