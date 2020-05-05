@@ -1,5 +1,9 @@
 {
-  "extends": ["config:base"],
+  "enabled": "true",
+  "extends": [
+    "config:base",
+    ":assignee(chipwolf)"
+  ],
   "kubernetes": {
     "fileMatch": ["\\.yaml$"]
   },
@@ -20,6 +24,10 @@
     }
   ],
   "packageRules": [
+    {
+      "updateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
+    },
     {
       "datasources": ["helm"],
       "managers": ["regex"],
