@@ -8,5 +8,5 @@ spec:
   releaseName: forecastle
   chart:
     git: git@github.com:stakater/Forecastle.git
-    ref: v1.0.41
+    ref: v1.0.42
     path: deployments/kubernetes/chart/forecastle
