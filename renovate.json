@@ -52,7 +52,7 @@
       "packageNames": [
         "ingress-nginx"
       ],
-      "registryUrls": ["https://kubernetes.github.io/ingress-nginx"]
+      "registryUrls": ["https://kubernetes.github.io/ingress-nginx/"]
     },
     {
       "datasources": ["helm"],
