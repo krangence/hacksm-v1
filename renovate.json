@@ -21,6 +21,13 @@
         "chart:\n *git: git@github.com:(?<depName>.*?).git\n *ref: (?<currentValue>.*?)\n"
       ],
       "datasourceTemplate": "github-tags"
+    },
+    {
+      "fileMatch": ["^cloudbuild.yaml$"],
+      "matchStrings": [
+        "name: (?<depName>.*):(?<currentValue>.*)\n"
+      ],
+      "datasourceTemplate": "docker"
     }
   ],
   "packageRules": [
