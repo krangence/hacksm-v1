@@ -62,6 +62,14 @@
         "external-dns"
       ],
       "registryUrls": ["https://charts.bitnami.com/bitnami"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "gitpod"
+      ],
+      "registryUrls": ["https://charts.gitpod.io"]
     }
   ]
 }
