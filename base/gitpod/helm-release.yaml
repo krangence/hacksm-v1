@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://charts.gitpod.io
     name: gitpod
-    version: 0.3.0
+    version: 0.4.0
   values:
     hostname: code.hacksm.net
    # valuesFrom:
