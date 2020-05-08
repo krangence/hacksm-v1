@@ -36,7 +36,7 @@ spec:
         fsGroup: {{ .Values.securityContext.fsGroup }}
       containers:
       - name: {{ template "minecraft.fullname" . }}
-        image: "{{ .Values.image }}:{{ .Values.imageTag }}"
+        image: "{{ .Values.image }}"
         imagePullPolicy: Always
         resources:
 {{ toYaml .Values.resources | indent 10 }}
@@ -260,7 +260,7 @@ spec:
       containers:
       {{- if .Values.minecraftServer.rconWebAdmin.enabled }}
       - name: "{{ template "minecraft.fullname" . }}-rcon-web-admin"
-        image: "{{ .Values.minecraftServer.rconWebAdmin.image }}:{{ .Values.minecraftServer.rconWebAdmin.imageTag }}"
+        image: "{{ .Values.minecraftServer.rconWebAdmin.image }}"
         env:
         - name: RWA_USERNAME
           value: {{ .Values.minecraftServer.rconWebAdmin.username | quote }}
@@ -312,7 +312,7 @@ spec:
       {{- end }}
       {{- if .Values.minecraftServer.cloudCommander.enabled }}
       - name: "{{ template "minecraft.fullname" . }}-cloudcmd"
-        image: "{{ .Values.minecraftServer.cloudCommander.image }}:{{ .Values.minecraftServer.cloudCommander.imageTag }}"
+        image: "{{ .Values.minecraftServer.cloudCommander.image }}"
         env:
         - name: CLOUDCMD_ROOT
           value: "/data"

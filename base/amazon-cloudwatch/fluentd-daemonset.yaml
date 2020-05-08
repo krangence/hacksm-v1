@@ -21,7 +21,7 @@ spec:
       # See https://github.com/fluent/fluentd-kubernetes-daemonset/issues/90
       initContainers:
         - name: copy-fluentd-config
-          image: busybox
+          image: busybox:1.31.1
           command: ['sh', '-c', 'cp /config-volume/..data/* /fluentd/etc']
           volumeMounts:
             - name: config-volume
@@ -29,7 +29,7 @@ spec:
             - name: fluentdconf
               mountPath: /fluentd/etc
         - name: update-log-driver
-          image: busybox
+          image: busybox:1.31.1
           command: ['sh', '-c', '']
       containers:
         - name: fluentd-cloudwatch

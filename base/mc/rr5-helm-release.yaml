@@ -36,6 +36,7 @@ spec:
       initialDelaySeconds: 300
       periodSeconds: 10
     minecraftServer:
+      image: itzg/minecraft-server:openj9
       eula: "TRUE"
       version: "1.12.2"
       type: "FORGE"
@@ -50,8 +51,7 @@ spec:
         serviceType: NodePort
       rconWebAdmin:
         enabled: true
-        image: docker.io/cwlf/rcon@sha256
-        imageTag: e6d0d325f9686c00f8b4b50afd9ef7a03a5bf0c305e7567db008d8679163c6b1
+        image: docker.io/cwlf/rcon@sha256:e6d0d325f9686c00f8b4b50afd9ef7a03a5bf0c305e7567db008d8679163c6b1
         websocketUrlSsl: "wss://rr5-rwa.mc.playhrzn.com:4327"
         serviceType: NodePort
         ingress:
@@ -70,7 +70,7 @@ spec:
             alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":4327}]'
       cloudCommander:
         enabled: true
-        imageTag: 14.3.10-alpine
+        image: coderaiser/cloudcmd:14.3.10-alpine
         serviceType: NodePort
         ingress:
           enabled: true
