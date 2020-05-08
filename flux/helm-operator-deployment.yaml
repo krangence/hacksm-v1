@@ -29,7 +29,7 @@ spec:
           # There are no ":latest" images for helm-operator. Find the most recent
           # release or image version at https://hub.docker.com/r/fluxcd/helm-operator/tags
           # and replace the tag here.
-          image: docker.io/fluxcd/helm-operator:1.0.1
+          image: docker.io/fluxcd/helm-operator:1.0.1@sha256:a2a8bf7538458291ebde17a1f9e5ec0d711f6c9f0a3011e6eb9da680e5b82f61
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

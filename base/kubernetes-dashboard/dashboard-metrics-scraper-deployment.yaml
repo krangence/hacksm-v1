@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: dashboard-metrics-scraper
-          image: kubernetesui/metrics-scraper:v1.0.4
+          image: kubernetesui/metrics-scraper:v1.0.4@sha256:d78f995c07124874c2a2e9b404cffa6bc6233668d63d6c6210574971f3d5914b
           ports:
             - containerPort: 8000
               protocol: TCP

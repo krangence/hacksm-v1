@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: kubernetes-dashboard
-          image: kubernetesui/dashboard:v2.0.0-beta2
+          image: kubernetesui/dashboard:v2.0.0-beta2@sha256:cddce2c8988ecd85b8e6bc3d53f8d505d9c59308a373850cbd66f6fda457a874
           imagePullPolicy: Always
           ports:
             - containerPort: 8443

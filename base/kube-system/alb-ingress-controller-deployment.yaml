@@ -20,5 +20,5 @@ spec:
           args:
             - --ingress-class=alb
             - --cluster-name=playhrzn-dev
-          image: docker.io/amazon/aws-alb-ingress-controller:v1.2.0-alpha.1
+          image: docker.io/amazon/aws-alb-ingress-controller:v1.2.0-alpha.1@sha256:bd0ad42856eebdb6bbe4e7d1a19789c50af9b3d2f4e82b2f1fdd47e307afc1e8
       serviceAccountName: alb-ingress-controller

@@ -36,7 +36,7 @@ spec:
       initialDelaySeconds: 300
       periodSeconds: 10
     minecraftServer:
-      image: itzg/minecraft-server:openj9
+      image: itzg/minecraft-server:openj9@sha256:77e55344f9676eb09cca5aa3fe6888be8ac4d935468ff3bf165341d7bbfe4897
       eula: "TRUE"
       version: "1.12.2"
       type: "FORGE"
@@ -70,7 +70,7 @@ spec:
             alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":4327}]'
       cloudCommander:
         enabled: true
-        image: coderaiser/cloudcmd:14.3.10-alpine
+        image: coderaiser/cloudcmd:14.3.10-alpine@sha256:22ccfe20cd26fb669a87778ba3a13ff396a6e09aff0034fb0ccca7f87fed484d
         serviceType: NodePort
         ingress:
           enabled: true
