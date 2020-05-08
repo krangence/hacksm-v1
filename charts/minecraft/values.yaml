@@ -196,6 +196,7 @@ minecraftServer:
     annotations: {}
     ingress:
       enabled: false
+      hostname: cloudcmd.local
       annotations: {}
       webAnnotations: {}
       websocketAnnotations: {}

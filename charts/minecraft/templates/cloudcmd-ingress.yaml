@@ -17,9 +17,10 @@ metadata:
     heritage: "{{ .Release.Service }}"
 spec:
   rules:
-  - http:
+  - host: {{ .Values.minecraftServer.cloudCommander.ingress.hostname }}
+    http:
       paths:
-        {{- if .Values.minecraftServer.rconWebAdmin.ingress.sslRedirect }}
+        {{- if .Values.minecraftServer.cloudCommander.ingress.sslRedirect }}
         - path: /*
           backend:
             serviceName: ssl-redirect
