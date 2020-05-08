@@ -27,7 +27,8 @@
       "matchStrings": [
         "name: (?<depName>.*):(?<currentValue>.*)\n"
       ],
-      "datasourceTemplate": "docker"
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
     }
   ],
   "packageRules": [
