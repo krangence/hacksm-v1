@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: cloudwatch-agent
-          image: amazon/cloudwatch-agent:latest
+          image: amazon/cloudwatch-agent:1.237768.0
           imagePullPolicy: Always
           # ports:
           #   - containerPort: 8125
