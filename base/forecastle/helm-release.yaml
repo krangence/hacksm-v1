@@ -10,3 +10,14 @@ spec:
     git: git@github.com:stakater/Forecastle.git
     ref: v1.0.42
     path: deployments/kubernetes/chart/forecastle
+  values:
+    forecastle:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+          external-dns.alpha.kubernetes.io/hostname: apps.mc.playhrzn.com
+        hosts:
+          - host: apps.mc.playhrzn.com
+            paths:
+              - /
