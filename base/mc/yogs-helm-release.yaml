@@ -56,18 +56,12 @@ spec:
         serviceType: NodePort
         ingress:
           enabled: true
-          sslRedirect: true
+          sslRedirect: false
+          hostname: yogs-rwa.mc.playhrzn.com
           annotations:
-            kubernetes.io/ingress.class: alb
-            alb.ingress.kubernetes.io/scheme: internet-facing
-            alb.ingress.kubernetes.io/group.name: yogs-rwa
-            alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:521397258504:certificate/30948eb5-f96e-423d-8eec-cb26cb459de6
+            kubernetes.io/ingress.class: "nginx"
+            forecastle.stakater.com/expose: "true"
             external-dns.alpha.kubernetes.io/hostname: yogs-rwa.mc.playhrzn.com
-          webAnnotations:
-            alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}, {"HTTPS":443}]'
-            alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
-          websocketAnnotations:
-            alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":4327}]'
       cloudCommander:
         enabled: true
         image: coderaiser/cloudcmd:14.5.1-alpine@sha256:4d78e27eeb4393ef330b8121c84b7a78b499ee6d364bea3f697523165e292d38

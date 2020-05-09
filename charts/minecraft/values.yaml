@@ -173,6 +173,7 @@ minecraftServer:
     annotations: {}
     ingress:
       enabled: false
+      hostname: rcon-web-admin.local
       annotations: {}
       webAnnotations: {}
       websocketAnnotations: {}
