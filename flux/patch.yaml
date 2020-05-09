@@ -15,7 +15,6 @@ spec:
             - --git-label=flux-sync
             - --git-email=accounts@hrznstudio.com
             - --git-poll-interval=30s
-            - --git-poll-interval=30s
             - --sync-garbage-collection
             - --manifest-generation=true
             - --listen-metrics=:3031

@@ -56,3 +56,4 @@ spec:
           args:
             - --tiller-namespace=kube-system
             - --enabled-helm-versions=v3
+            - --charts-sync-interval=30s
