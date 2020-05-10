@@ -51,7 +51,7 @@ spec:
         serviceType: NodePort
       rconWebAdmin:
         enabled: true
-        image: docker.io/cwlf/rcon@sha256:e6d0d325f9686c00f8b4b50afd9ef7a03a5bf0c305e7567db008d8679163c6b1
+        image: cwlf/rcon:latest@sha256:e6d0d325f9686c00f8b4b50afd9ef7a03a5bf0c305e7567db008d8679163c6b1
         websocketUrlSsl: "wss://yogs-rwa-ws.mc.playhrzn.com"
         serviceType: NodePort
         ingress:
