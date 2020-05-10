@@ -21,12 +21,12 @@ spec:
     http:
       paths:
         {{- if .Values.minecraftServer.cloudCommander.ingress.sslRedirect }}
-        - path: /*
+        - path: /
           backend:
             serviceName: ssl-redirect
             servicePort: use-annotation
         {{- end }}
-        - path: /*
+        - path: /
           backend:
             serviceName: "{{ template "minecraft.fullname" . }}-cloudcmd"
             servicePort: {{ .Values.minecraftServer.cloudCommander.port }}
