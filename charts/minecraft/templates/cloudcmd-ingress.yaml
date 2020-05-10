@@ -20,12 +20,6 @@ spec:
   - host: {{ .Values.minecraftServer.cloudCommander.ingress.hostname }}
     http:
       paths:
-        {{- if .Values.minecraftServer.cloudCommander.ingress.sslRedirect }}
-        - path: /
-          backend:
-            serviceName: ssl-redirect
-            servicePort: use-annotation
-        {{- end }}
         - path: /
           backend:
             serviceName: "{{ template "minecraft.fullname" . }}-cloudcmd"

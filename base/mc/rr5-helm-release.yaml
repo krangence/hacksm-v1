@@ -73,7 +73,6 @@ spec:
         serviceType: NodePort
         ingress:
           enabled: true
-          sslRedirect: false
           hostname: rr5-files.mc.playhrzn.com
           annotations:
             kubernetes.io/ingress.class: "nginx"
