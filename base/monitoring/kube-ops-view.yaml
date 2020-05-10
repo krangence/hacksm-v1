@@ -15,8 +15,10 @@ spec:
       create: true
     ingress:
       enabled: true
-      hostname: ops.mc.playhrzn.com
       annotations:
-        kubernetes.io/ingress.class: "nginx"
         forecastle.stakater.com/expose: "true"
+        forecastle.stakater.com/appName: "Kube Ops View"
+        forecastle.stakater.com/icon: https://hub.helm.sh/api/chartsvc/v1/assets/stable/kube-ops-view/logo
+        forecastle.stakater.com/url: https://ops.mc.playhrzn.com
+        kubernetes.io/ingress.class: "nginx"
         external-dns.alpha.kubernetes.io/hostname: ops.mc.playhrzn.com

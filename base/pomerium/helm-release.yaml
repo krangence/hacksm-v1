@@ -1,0 +1,68 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: pomerium
+  namespace: pomerium
+spec:
+  releaseName: pomerium
+  chart:
+    repository: https://helm.pomerium.io
+    name: pomerium
+    version: 8.5.5
+  valuesFrom:
+    - secretKeyRef:
+        name: pomerium-values
+  values:
+    ingress:
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+        kubernetes.io/ingress.allow-http: "false"
+        external-dns.alpha.kubernetes.io/hostname: 'forwardauth.mc.playhrzn.com,authorize.mc.playhrzn.com,authenticate.mc.playhrzn.com'
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+        nginx.ingress.kubernetes.io/proxy-buffer-size: "16K"
+    forwardAuth:
+      enabled: false
+    service:
+      type: NodePort
+    config:
+      rootDomain: mc.playhrzn.com
+      policy:
+        - from: https://jingle-rwa.mc.playhrzn.com
+          to: http://mc-jingle-minecraft-rcon-web-admin.mc.svc.cluster.local:4326
+          allowed_domains:
+            - chipwolf.uk
+            - hrznstudio.com
+        - from: https://jingle-files.mc.playhrzn.com
+          to: http://mc-jingle-minecraft-cloudcmd.mc.svc.cluster.local
+          allowed_domains:
+            - chipwolf.uk
+            - hrznstudio.com
+        - from: https://rr5-rwa.mc.playhrzn.com
+          to: http://mc-rr5-minecraft-rcon-web-admin.mc.svc.cluster.local:4326
+          allowed_domains:
+            - chipwolf.uk
+            - hrznstudio.com
+        - from: https://rr5-files.mc.playhrzn.com
+          to: http://mc-rr5-minecraft-cloudcmd.mc.svc.cluster.local
+          allowed_domains:
+            - chipwolf.uk
+            - hrznstudio.com
+        - from: https://yogs-rwa.mc.playhrzn.com
+          to: http://mc-yogs-minecraft-rcon-web-admin.mc.svc.cluster.local:4326
+          allowed_domains:
+            - chipwolf.uk
+            - hrznstudio.com
+        - from: https://yogs-files.mc.playhrzn.com
+          to: http://mc-yogs-minecraft-cloudcmd.mc.svc.cluster.local
+          allowed_domains:
+            - chipwolf.uk
+            - hrznstudio.com
+        - from: https://ops.mc.playhrzn.com
+          to: http://kube-ops-view.monitoring.svc.cluster.local
+          allowed_domains:
+            - chipwolf.uk
+            - hrznstudio.com
+          allow_websockets: true
+    operator:
+      enabled: true

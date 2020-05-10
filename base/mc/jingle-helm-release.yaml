@@ -59,10 +59,12 @@ spec:
           annotations:
             kubernetes.io/ingress.class: "nginx"
         webIngress:
-          hostname: jingle-rwa.mc.playhrzn.com
           annotations:
             forecastle.stakater.com/expose: "true"
-            nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+            forecastle.stakater.com/url: https://jingle-rwa.mc.playhrzn.com
+            forecastle.stakater.com/icon: https://brainfoolong.github.io/rcon-web-admin/images/logo.png
+            forecastle.stakater.com/appName: "RCON Web Admin"
+            forecastle.stakater.com/group: "jingle"
             external-dns.alpha.kubernetes.io/hostname: jingle-rwa.mc.playhrzn.com
         websocketIngress:
           hostname: jingle-rwa-ws.mc.playhrzn.com
@@ -70,15 +72,19 @@ spec:
             external-dns.alpha.kubernetes.io/hostname: jingle-rwa-ws.mc.playhrzn.com
       cloudCommander:
         enabled: true
+        auth: false
         image: coderaiser/cloudcmd:14.5.1-alpine@sha256:4d78e27eeb4393ef330b8121c84b7a78b499ee6d364bea3f697523165e292d38
         serviceType: NodePort
         ingress:
           enabled: true
-          hostname: jingle-files.mc.playhrzn.com
           annotations:
             kubernetes.io/ingress.class: "nginx"
-            forecastle.stakater.com/expose: "true"
             external-dns.alpha.kubernetes.io/hostname: jingle-files.mc.playhrzn.com
+            forecastle.stakater.com/expose: "true"
+            forecastle.stakater.com/url: https://jingle-files.mc.playhrzn.com
+            forecastle.stakater.com/icon: https://cloudcmd.io/img/logo/cloudcmd.png
+            forecastle.stakater.com/appName: "File Manager"
+            forecastle.stakater.com/group: "jingle"
     extraEnv:
       GENERIC_PACK: "https://cdn.hrzn.studio/jingle-server-staging.zip"
       GENERIC_PACK_STRIP_DIRS: "0"

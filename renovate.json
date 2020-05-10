@@ -70,6 +70,14 @@
         "external-dns"
       ],
       "registryUrls": ["https://charts.bitnami.com/bitnami"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "pomerium"
+      ],
+      "registryUrls": ["https://helm.pomerium.io"]
     }
   ]
 }

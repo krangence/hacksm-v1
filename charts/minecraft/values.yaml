@@ -176,10 +176,8 @@ minecraftServer:
       annotations: {}
     webIngress:
       annotations: {}
-      hostname: rcon-web-admin.local
     websocketIngress:
       annotations: {}
-      hostname: ws.rcon-web-admin.local
 
   cloudCommander:
     # If you enable this, make SURE to change your password below.
@@ -200,7 +198,6 @@ minecraftServer:
     annotations: {}
     ingress:
       enabled: false
-      hostname: cloudcmd.local
       annotations: {}
 
   query:
