@@ -30,6 +30,13 @@
       ],
       "datasourceTemplate": "docker",
       "versioningTemplate": "docker"
+    },
+    {
+      "fileMatch": ["(^|/)kustomization.yaml"],
+      "matchStrings": [
+        "- github.com\/(?<depName>.*?\/.*?)(?:\/|\\?).*?ref=(?<currentValue>.*?)\\s"
+      ],
+      "datasourceTemplate": "github-tags"
     }
   ],
   "packageRules": [
