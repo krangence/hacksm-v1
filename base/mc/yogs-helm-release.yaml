@@ -24,6 +24,7 @@ spec:
                   operator: NotIn
                   values:
                     - mc-rr5-minecraft
+                    - mc-jingle-minecraft
             topologyKey: "kubernetes.io/hostname"
     resources:
       requests:

@@ -2,7 +2,7 @@
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: rr5
+  name: jingle
   namespace: mc
 spec:
   chart:
@@ -19,12 +19,12 @@ spec:
                 - key: app
                   operator: In
                   values:
-                    - mc-rr5-minecraft
+                    - mc-jingle-minecraft
                 - key: app
                   operator: NotIn
                   values:
+                    - mc-rr5-minecraft
                     - mc-yogs-minecraft
-                    - mc-jingle-minecraft
             topologyKey: "kubernetes.io/hostname"
     resources:
       requests:
@@ -39,54 +39,54 @@ spec:
     minecraftServer:
       image: itzg/minecraft-server:openj9@sha256:e0c0fe5caa397a5c3cb7b473555c5faca5d422abb3abec9b52053e7cf952f45f
       eula: "TRUE"
-      version: "1.12.2"
-      type: "FORGE"
-      forgeVersion: "14.23.5.2847"
+      version: "1.15.2"
+      type: "PAPER"
       maxWorldSize: 29999984
       maxtickTime: -1
       memory: 8G
       annotations:
-        external-dns.alpha.kubernetes.io/hostname: rr5.mc.playhrzn.com
+        external-dns.alpha.kubernetes.io/hostname: jingle.mc.playhrzn.com
       rcon:
         enabled: true
         serviceType: NodePort
       rconWebAdmin:
         enabled: true
         image: cwlf/rcon:latest@sha256:e6d0d325f9686c00f8b4b50afd9ef7a03a5bf0c305e7567db008d8679163c6b1
-        websocketUrlSsl: "wss://rr5-rwa-ws.mc.playhrzn.com"
+        websocketUrlSsl: "wss://jingle-rwa-ws.mc.playhrzn.com"
         serviceType: NodePort
         ingress:
           enabled: true
           annotations:
             kubernetes.io/ingress.class: "nginx"
         webIngress:
-          hostname: rr5-rwa.mc.playhrzn.com
+          hostname: jingle-rwa.mc.playhrzn.com
           annotations:
             forecastle.stakater.com/expose: "true"
             nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-            external-dns.alpha.kubernetes.io/hostname: rr5-rwa.mc.playhrzn.com
+            external-dns.alpha.kubernetes.io/hostname: jingle-rwa.mc.playhrzn.com
         websocketIngress:
-          hostname: rr5-rwa-ws.mc.playhrzn.com
+          hostname: jingle-rwa-ws.mc.playhrzn.com
           annotations:
-            external-dns.alpha.kubernetes.io/hostname: rr5-rwa-ws.mc.playhrzn.com
+            external-dns.alpha.kubernetes.io/hostname: jingle-rwa-ws.mc.playhrzn.com
       cloudCommander:
         enabled: true
         image: coderaiser/cloudcmd:14.5.1-alpine@sha256:4d78e27eeb4393ef330b8121c84b7a78b499ee6d364bea3f697523165e292d38
         serviceType: NodePort
         ingress:
           enabled: true
-          hostname: rr5-files.mc.playhrzn.com
+          hostname: jingle-files.mc.playhrzn.com
           annotations:
             kubernetes.io/ingress.class: "nginx"
             forecastle.stakater.com/expose: "true"
-            external-dns.alpha.kubernetes.io/hostname: rr5-files.mc.playhrzn.com
+            external-dns.alpha.kubernetes.io/hostname: jingle-files.mc.playhrzn.com
     extraEnv:
-      GENERIC_PACK: "https://cdn.hrzn.studio/rr5-server-staging.zip"
+      GENERIC_PACK: "https://cdn.hrzn.studio/jingle-server-staging.zip"
       GENERIC_PACK_STRIP_DIRS: "0"
       OVERRIDE_SERVER_PROPERTIES: "1"
+      PAPERBUILD: "273"
     persistence:
       dataDir:
         enabled: true
         Size: 5Gi
       storageClass: ebs-sc
-      volumeName: pvc-bc6ba9b7-c4ce-425b-b300-6b21d83df743
+      volumeName: pvc-92fe93df-0396-41e0-b851-63412aa0736f
