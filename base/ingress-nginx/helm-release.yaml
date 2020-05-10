@@ -25,7 +25,6 @@ spec:
         targetPorts:
           http: tohttps
           https: http
-          tohttps: tohttps
       containerPort:
         http: 80
         https: 80
@@ -34,8 +33,9 @@ spec:
         use-proxy-protocol: "true"
         proxy-real-ip-cidr: 192.168.0.0/16
         use-forwarded-headers: "true"
+        ssl-redirect: "false"
         http-snippet: |
           server {
-            listen 2443;
-            return 308 https://\$host\$request_uri;
+            listen 2443 proxy_protocol;
+            return 307 https://$host$request_uri;
           }

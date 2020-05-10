@@ -62,6 +62,7 @@ spec:
           hostname: rr5-rwa.mc.playhrzn.com
           annotations:
             forecastle.stakater.com/expose: "true"
+            nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
             external-dns.alpha.kubernetes.io/hostname: rr5-rwa.mc.playhrzn.com
         websocketIngress:
           hostname: rr5-rwa-ws.mc.playhrzn.com
