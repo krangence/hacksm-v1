@@ -173,10 +173,13 @@ minecraftServer:
     annotations: {}
     ingress:
       enabled: false
-      hostname: rcon-web-admin.local
       annotations: {}
-      webAnnotations: {}
-      websocketAnnotations: {}
+    webIngress:
+      annotations: {}
+      hostname: rcon-web-admin.local
+    websocketIngress:
+      annotations: {}
+      hostname: ws.rcon-web-admin.local
 
   cloudCommander:
     # If you enable this, make SURE to change your password below.
@@ -199,8 +202,6 @@ minecraftServer:
       enabled: false
       hostname: cloudcmd.local
       annotations: {}
-      webAnnotations: {}
-      websocketAnnotations: {}
 
   query:
     # If you enable this, your server will be "published" to Gamespy

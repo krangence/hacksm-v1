@@ -3,15 +3,15 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: "{{ template "minecraft.fullname" . }}-rcon-web"
-  {{- if or .Values.minecraftServer.rconWebAdmin.ingress.annotations .Values.minecraftServer.rconWebAdmin.ingress.webAnnotations }}
+  {{- if or .Values.minecraftServer.rconWebAdmin.ingress.annotations .Values.minecraftServer.rconWebAdmin.webIngress.annotations }}
   annotations:
     {{- if .Values.minecraftServer.rconWebAdmin.ingress.annotations }}
     {{- range $key, $value := .Values.minecraftServer.rconWebAdmin.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
     {{- end }}
-    {{- if .Values.minecraftServer.rconWebAdmin.ingress.webAnnotations }}
-    {{- range $key, $value := .Values.minecraftServer.rconWebAdmin.ingress.webAnnotations }}
+    {{- if .Values.minecraftServer.rconWebAdmin.webIngress.annotations }}
+    {{- range $key, $value := .Values.minecraftServer.rconWebAdmin.webIngress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
     {{- end }}
@@ -23,16 +23,10 @@ metadata:
     heritage: "{{ .Release.Service }}"
 spec:
   rules:
-  - host: {{ .Values.minecraftServer.rconWebAdmin.ingress.hostname }}
+  - host: {{ .Values.minecraftServer.rconWebAdmin.webIngress.hostname }}
     http:
       paths:
-      {{- if .Values.minecraftServer.rconWebAdmin.ingress.sslRedirect }}
-      - path: /*
-        backend:
-          serviceName: ssl-redirect
-          servicePort: use-annotation
-      {{- end }}
-      - path: /*
+      - path: /
         backend:
           serviceName: "{{ template "minecraft.fullname" . }}-rcon-web-admin"
           servicePort: 4326
@@ -41,15 +35,15 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: "{{ template "minecraft.fullname" . }}-rcon-websocket"
-  {{- if or .Values.minecraftServer.rconWebAdmin.ingress.annotations .Values.minecraftServer.rconWebAdmin.ingress.websocketAnnotations }}
+  {{- if or .Values.minecraftServer.rconWebAdmin.ingress.annotations .Values.minecraftServer.rconWebAdmin.websocketIngress.annotations }}
   annotations:
     {{- if .Values.minecraftServer.rconWebAdmin.ingress.annotations }}
     {{- range $key, $value := .Values.minecraftServer.rconWebAdmin.ingress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
     {{- end }}
-    {{- if .Values.minecraftServer.rconWebAdmin.ingress.webAnnotations }}
-    {{- range $key, $value := .Values.minecraftServer.rconWebAdmin.ingress.websocketAnnotations }}
+    {{- if .Values.minecraftServer.rconWebAdmin.websocketIngress.annotations }}
+    {{- range $key, $value := .Values.minecraftServer.rconWebAdmin.websocketIngress.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
     {{- end }}
@@ -61,10 +55,10 @@ metadata:
     heritage: "{{ .Release.Service }}"
 spec:
   rules:
-  - host: {{ .Values.minecraftServer.rconWebAdmin.ingress.hostname }}
+  - host: {{ .Values.minecraftServer.rconWebAdmin.websocketIngress.hostname }}
     http:
       paths:
-      - path: /*
+      - path: /
         backend:
           serviceName: "{{ template "minecraft.fullname" . }}-rcon-web-admin"
           servicePort: 4327

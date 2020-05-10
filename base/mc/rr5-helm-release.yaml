@@ -56,17 +56,18 @@ spec:
         serviceType: NodePort
         ingress:
           enabled: true
-          sslRedirect: true
           annotations:
             kubernetes.io/ingress.class: alb
             alb.ingress.kubernetes.io/scheme: internet-facing
             alb.ingress.kubernetes.io/group.name: rr5-rwa
             alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:521397258504:certificate/30948eb5-f96e-423d-8eec-cb26cb459de6
             external-dns.alpha.kubernetes.io/hostname: rr5-rwa.mc.playhrzn.com
-          webAnnotations:
+        webIngress:
+          annotations:
             alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}, {"HTTPS":443}]'
             alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
-          websocketAnnotations:
+        websocketIngress:
+          annotations:
             alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":4327}]'
       cloudCommander:
         enabled: true
