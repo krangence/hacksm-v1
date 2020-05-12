@@ -37,7 +37,7 @@ spec:
       initialDelaySeconds: 300
       periodSeconds: 10
     minecraftServer:
-      image: itzg/minecraft-server:openj9@sha256:170860daca88ed7011753b85cad44ee34d4e8a557e3aa7a82f36ebb5bf723816
+      image: itzg/minecraft-server:openj9@sha256:9db25fe2a45e672a127a48f0929f744441a5b52d43fc220ba6a2d66e6e51b3ca
       eula: "TRUE"
       version: "1.12.2"
       type: "FORGE"
