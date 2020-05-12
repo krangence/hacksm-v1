@@ -1,0 +1,12 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: metricbeat
+  namespace: elastic-stack
+spec:
+  releaseName: metricbeat
+  chart:
+    repository: https://helm.elastic.co
+    name: metricbeat
+    version: 7.6.2

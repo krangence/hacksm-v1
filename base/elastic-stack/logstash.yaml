@@ -1,0 +1,12 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: logstash
+  namespace: elastic-stack
+spec:
+  releaseName: logstash
+  chart:
+    repository: https://helm.elastic.co
+    name: logstash
+    version: 7.6.2

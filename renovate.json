@@ -78,6 +78,16 @@
         "pomerium"
       ],
       "registryUrls": ["https://helm.pomerium.io"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "elasticsearch",
+        "logstash",
+        "kibana"
+      ],
+      "registryUrls": ["https://helm.elastic.co"]
     }
   ]
 }

@@ -64,5 +64,10 @@ spec:
             - chipwolf.uk
             - hrznstudio.com
           allow_websockets: true
+        - from: https://kibana.mc.playhrzn.com
+          to: http://kibana-kibana.elastic-stack.svc.cluster.local:5601
+          allowed_domains:
+            - chipwolf.uk
+            - hrznstudio.com
     operator:
       enabled: true

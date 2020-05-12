@@ -1,0 +1,23 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: kibana
+  namespace: elastic-stack
+spec:
+  releaseName: kibana
+  chart:
+    repository: https://helm.elastic.co
+    name: kibana
+    version: 7.6.2
+  values:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: "nginx"
+        external-dns.alpha.kubernetes.io/hostname: kibana.mc.playhrzn.com
+        forecastle.stakater.com/expose: "true"
+        forecastle.stakater.com/url: "https://kibana.mc.playhrzn.com"
+        forecastle.stakater.com/icon: https://github.com/stakater/ForecastleIcons/raw/master/kibana.png
+        forecastle.stakater.com/appName: "Kibana"
+        forecastle.stakater.com/group: "monitoring"
