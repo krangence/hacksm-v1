@@ -10,8 +10,6 @@ configured by [eksctl](https://eksctl.io) through GitOps.
 - [Prometheus](https://prometheus.io/) (its [Alertmanager](https://prometheus.io/docs/alerting/alertmanager/), its [operator](https://github.com/coreos/prometheus-operator), its [`node-exporter`](https://github.com/prometheus/node_exporter), [`kube-state-metrics`](https://github.com/kubernetes/kube-state-metrics), and [`metrics-server`](https://github.com/kubernetes-incubator/metrics-server)) -- for powerful metrics & alerts.
 - [Grafana](https://grafana.com) -- for a rich way to visualize metrics via dashboards you can create, explore, and share.
 - [Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) -- Kubernetes' standard dashboard.
-- [Fluentd](https://www.fluentd.org/) & Amazon's [CloudWatch agent](https://aws.amazon.com/cloudwatch/) -- for cluster & containers' [log collection, aggregation & analytics in CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-setup-logs.html).
-- [podinfo](https://github.com/stefanprodan/podinfo) --  a toy demo application.
 
 ## Pre-requisites
 
@@ -28,10 +26,6 @@ Therefore, depending on your use-case, you may want to:
 
 - add these policies to all node groups,
 - add [node selectors](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) to the ALB ingress, auto-scaler and CloudWatch pods, so that they are deployed on the nodes configured with these policies.
-
-## How to access workloads
-
-For security reasons, this quickstart profile does not expose any workload publicly. However, should you want to access one of the workloads, various solutions are possible.
 
 ### Port-forwarding
 
