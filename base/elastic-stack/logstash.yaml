@@ -10,3 +10,16 @@ spec:
     repository: https://helm.elastic.co
     name: logstash
     version: 7.6.2
+  values:
+    service:
+      annotations: {}
+      type: ClusterIP
+      ports:
+        - name: beats
+          port: 5044
+          protocol: TCP
+          targetPort: 5044
+        - name: http
+          port: 8080
+          protocol: TCP
+          targetPort: 8080
