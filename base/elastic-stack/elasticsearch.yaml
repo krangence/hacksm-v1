@@ -9,4 +9,4 @@ spec:
   chart:
     repository: https://helm.elastic.co
     name: elasticsearch
-    version: 7.6.2
+    version: 7.7.0
