@@ -16,13 +16,13 @@ spec:
       defaultDashboardsEnabled: true
       ingress:
         enabled: true
-        hosts: ['grafana.mc.playhrzn.com']
+        hosts: ['grafana.hacksm.net']
         annotations:
           forecastle.stakater.com/expose: "true"
           forecastle.stakater.com/appName: Grafana
           forecastle.stakater.com/icon: https://raw.githubusercontent.com/stakater/ForecastleIcons/master/grafana.png
           kubernetes.io/ingress.class: "nginx"
-          external-dns.alpha.kubernetes.io/hostname: grafana.mc.playhrzn.com
+          external-dns.alpha.kubernetes.io/hostname: grafana.hacksm.net
     nodeExporter:
       serviceMonitor:
         relabelings:

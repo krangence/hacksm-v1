@@ -20,4 +20,4 @@ spec:
         forecastle.stakater.com/appName: "Kube Ops View"
         forecastle.stakater.com/icon: 'https://hub.helm.sh/api/chartsvc/v1/assets/stable/kube-ops-view/logo'
         kubernetes.io/ingress.class: "nginx"
-        external-dns.alpha.kubernetes.io/hostname: ops.mc.playhrzn.com
+        external-dns.alpha.kubernetes.io/hostname: ops.hacksm.net

@@ -16,8 +16,8 @@ spec:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx"
-          external-dns.alpha.kubernetes.io/hostname: apps.mc.playhrzn.com
+          external-dns.alpha.kubernetes.io/hostname: apps.hacksm.net
         hosts:
-          - host: apps.mc.playhrzn.com
+          - host: apps.hacksm.net
             paths:
               - /

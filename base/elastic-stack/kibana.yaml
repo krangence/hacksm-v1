@@ -15,9 +15,9 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
-        external-dns.alpha.kubernetes.io/hostname: kibana.mc.playhrzn.com
+        external-dns.alpha.kubernetes.io/hostname: kibana.hacksm.net
         forecastle.stakater.com/expose: "true"
-        forecastle.stakater.com/url: "https://kibana.mc.playhrzn.com"
+        forecastle.stakater.com/url: "https://kibana.hacksm.net"
         forecastle.stakater.com/icon: https://github.com/stakater/ForecastleIcons/raw/master/kibana.png
         forecastle.stakater.com/appName: "Kibana"
         forecastle.stakater.com/group: "monitoring"
