@@ -25,6 +25,7 @@ spec:
                   values:
                     - mc-rr5-minecraft
                     - mc-jingle-minecraft
+                    - mc-st-minecraft
             topologyKey: "kubernetes.io/hostname"
     resources:
       requests:

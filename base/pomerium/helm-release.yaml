@@ -28,6 +28,16 @@ spec:
     config:
       rootDomain: mc.playhrzn.com
       policy:
+        - from: https://st-rwa.mc.playhrzn.com
+          to: http://mc-st-minecraft-rcon-web-admin.mc.svc.cluster.local:4326
+          allowed_domains:
+            - chipwolf.uk
+            - hrznstudio.com
+        - from: https://st-files.mc.playhrzn.com
+          to: http://mc-st-minecraft-cloudcmd.mc.svc.cluster.local
+          allowed_domains:
+            - chipwolf.uk
+            - hrznstudio.com
         - from: https://jingle-rwa.mc.playhrzn.com
           to: http://mc-jingle-minecraft-rcon-web-admin.mc.svc.cluster.local:4326
           allowed_domains:
