@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://helm.elastic.co
     name: kibana
-    version: 7.6.2
+    version: 7.7.0
   values:
     ingress:
       enabled: true
