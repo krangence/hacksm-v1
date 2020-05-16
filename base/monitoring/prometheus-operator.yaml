@@ -14,13 +14,23 @@ spec:
     grafana:
       enabled: true
       defaultDashboardsEnabled: true
+      grafana.ini:
+        users:
+          viewers_can_edit: false
+        auth:
+          disable_login_form: true
+          disable_signout_menu: true
+        auth.anonymous:
+          enabled: true
+          org_role: Viewer
       ingress:
         enabled: true
-        hosts: ['grafana.mc.playhrzn.com']
+        hosts: ["grafana.local"]
         annotations:
           forecastle.stakater.com/expose: "true"
           forecastle.stakater.com/appName: Grafana
           forecastle.stakater.com/icon: https://raw.githubusercontent.com/stakater/ForecastleIcons/master/grafana.png
+          forecastle.stakater.com/url: https://grafana.mc.playhrzn.com
           kubernetes.io/ingress.class: "nginx"
           external-dns.alpha.kubernetes.io/hostname: grafana.mc.playhrzn.com
     nodeExporter:
