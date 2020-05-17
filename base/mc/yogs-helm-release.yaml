@@ -20,17 +20,7 @@ spec:
                   operator: In
                   values:
                     - mc-yogs-minecraft
-                - key: app
-                  operator: NotIn
-                  values:
-                    - mc-rr5-minecraft
-                    - mc-jingle-minecraft
-                    - mc-st-minecraft
             topologyKey: "kubernetes.io/hostname"
-    resources:
-      requests:
-        memory: 8Gi
-        cpu: "1"
     livenessProbe:
       initialDelaySeconds: 300
       periodSeconds: 10
@@ -38,7 +28,7 @@ spec:
       initialDelaySeconds: 300
       periodSeconds: 10
     minecraftServer:
-      image: itzg/minecraft-server:openj9@sha256:9db25fe2a45e672a127a48f0929f744441a5b52d43fc220ba6a2d66e6e51b3ca
+      image: itzg/minecraft-server:latest@sha256:8459b5edbcf88d900a54810b70482a78a67e0895961f7a3e086ad7fc9c3cc78a
       eula: "TRUE"
       version: "1.12.2"
       type: "FORGE"
@@ -91,6 +81,7 @@ spec:
       GENERIC_PACK: "https://cdn.hrzn.studio/yogs-server-staging.zip"
       GENERIC_PACK_STRIP_DIRS: "0"
       OVERRIDE_SERVER_PROPERTIES: "1"
+      USE_AIKAR_FLAGS: "1"
     persistence:
       dataDir:
         enabled: true

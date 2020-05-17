@@ -46,10 +46,6 @@ spec:
               path: /healthz
             initialDelaySeconds: 1
             timeoutSeconds: 5
-          resources:
-            requests:
-              cpu: 50m
-              memory: 64Mi
           volumeMounts:
             - name: git-key
               mountPath: /etc/fluxd/ssh

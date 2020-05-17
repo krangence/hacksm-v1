@@ -1,0 +1,11 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: vertical-pod-autoscaler
+  namespace: kube-system
+spec:
+  chart:
+    repository: https://cowboysysop.github.io/charts/
+    name: vertical-pod-autoscaler
+    version: 1.4.1
