@@ -88,3 +88,23 @@ spec:
         Size: 5Gi
       storageClass: ebs-sc
       volumeName: pvc-d0d01d32-bf54-4339-8272-80190ecd186e
+---
+apiVersion: "autoscaling.k8s.io/v1beta2"
+kind: VerticalPodAutoscaler
+metadata:
+  name: yogs-vpa
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: mc-yogs-minecraft
+  resourcePolicy:
+    containerPolicies:
+      - containerName: '*'
+        minAllowed:
+          cpu: 100m
+          memory: 4608Mi
+        maxAllowed:
+          cpu: 2
+          memory: 8Gi
+        controlledResources: ["cpu", "memory"]

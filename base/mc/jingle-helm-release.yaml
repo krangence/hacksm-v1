@@ -34,7 +34,7 @@ spec:
       type: "PAPER"
       maxWorldSize: 29999984
       maxtickTime: -1
-      memory: 8G
+      memory: 6G
       annotations:
         external-dns.alpha.kubernetes.io/hostname: jingle.mc.playhrzn.com
       rcon:
@@ -88,3 +88,23 @@ spec:
         Size: 5Gi
       storageClass: ebs-sc
       volumeName: pvc-92fe93df-0396-41e0-b851-63412aa0736f
+---
+apiVersion: "autoscaling.k8s.io/v1beta2"
+kind: VerticalPodAutoscaler
+metadata:
+  name: jingle-vpa
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: mc-jingle-minecraft
+  resourcePolicy:
+    containerPolicies:
+      - containerName: '*'
+        minAllowed:
+          cpu: 150m
+          memory: 3584Mi
+        maxAllowed:
+          cpu: 1
+          memory: 6Gi
+        controlledResources: ["cpu", "memory"]

@@ -88,3 +88,23 @@ spec:
         Size: 5Gi
       storageClass: ebs-sc
       volumeName: pvc-bc6ba9b7-c4ce-425b-b300-6b21d83df743
+---
+apiVersion: "autoscaling.k8s.io/v1beta2"
+kind: VerticalPodAutoscaler
+metadata:
+  name: rr5-vpa
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: mc-rr5-minecraft
+  resourcePolicy:
+    containerPolicies:
+      - containerName: '*'
+        minAllowed:
+          cpu: 200m
+          memory: 7168Mi
+        maxAllowed:
+          cpu: 2
+          memory: 8Gi
+        controlledResources: ["cpu", "memory"]

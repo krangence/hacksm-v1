@@ -34,7 +34,7 @@ spec:
       type: "PAPER"
       maxWorldSize: 29999984
       maxtickTime: -1
-      memory: 8G
+      memory: 5G
       annotations:
         external-dns.alpha.kubernetes.io/hostname: st.mc.playhrzn.com
       rcon:
@@ -88,3 +88,23 @@ spec:
         Size: 5Gi
       storageClass: ebs-sc
       volumeName: pvc-b9e227a7-170c-4aba-babb-f334b17af46a
+---
+apiVersion: "autoscaling.k8s.io/v1beta2"
+kind: VerticalPodAutoscaler
+metadata:
+  name: st-vpa
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: mc-st-minecraft
+  resourcePolicy:
+    containerPolicies:
+      - containerName: '*'
+        minAllowed:
+          cpu: 30m
+          memory: 3072Mi
+        maxAllowed:
+          cpu: 1
+          memory: 5Gi
+        controlledResources: ["cpu", "memory"]
