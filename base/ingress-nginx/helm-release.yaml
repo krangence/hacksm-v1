@@ -34,6 +34,7 @@ spec:
         proxy-real-ip-cidr: 192.168.0.0/16
         use-forwarded-headers: "true"
         ssl-redirect: "false"
+        proxy-body-size: 32m
         http-snippet: |
           server {
             listen 2443 proxy_protocol;
