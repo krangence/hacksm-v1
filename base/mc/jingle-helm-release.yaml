@@ -35,6 +35,11 @@ spec:
       maxWorldSize: 29999984
       maxtickTime: -1
       memory: 6G
+      pvp: true
+      spawnAnimals: false
+      spawnMonsters: false
+      spawnNPCs: false
+      announcePlayerAchievements: false
       annotations:
         external-dns.alpha.kubernetes.io/hostname: jingle.mc.playhrzn.com
       rcon:
