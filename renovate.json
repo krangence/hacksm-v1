@@ -6,17 +6,28 @@
   "masterIssue": "true",
   "masterIssueAutoclose": "true",
   "packageRules": [
-    {"automerge": true, "updateTypes": ["digest", "minor", "patch", "pin"]},
+    {
+      "automerge": "true", 
+      "updateTypes": ["digest", "minor", "patch", "pin"]
+    },
     {
       "datasources": ["helm"],
       "managers": ["regex"],
-      "packageNames": ["elasticsearch", "kibana", "logstash"],
+      "packageNames": [
+        "elasticsearch",
+        "filebeat",
+        "kibana",
+        "logstash",
+        "metricbeat"
+      ],
       "registryUrls": ["https://helm.elastic.co"]
     },
     {
       "datasources": ["helm"],
       "managers": ["regex"],
-      "packageNames": ["external-dns"],
+      "packageNames": [
+        "external-dns"
+      ],
       "registryUrls": ["https://charts.bitnami.com/bitnami"]
     },
     {
@@ -24,17 +35,6 @@
       "managers": ["regex"],
       "packageNames": ["ingress-nginx"],
       "registryUrls": ["https://kubernetes.github.io/ingress-nginx/"]
-    },
-    {
-      "datasources": ["helm"],
-      "managers": ["regex"],
-      "packageNames": [
-        "kube-ops-view",
-        "metrics-server",
-        "prometheus-operator",
-        "sealed-secrets"
-      ],
-      "registryUrls": ["https://kubernetes-charts.storage.googleapis.com/"]
     },
     {
       "datasources": ["helm"],
@@ -48,7 +48,9 @@
     {
       "datasourceTemplate": "docker",
       "fileMatch": ["^cloudbuild.yaml$"],
-      "matchStrings": ["name: (?<depName>.*):(?<currentValue>.*)\n"],
+      "matchStrings": [
+        "name: (?<depName>.*):(?<currentValue>.*)\n"
+      ],
       "versioningTemplate": "docker"
     },
     {
