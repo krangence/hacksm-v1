@@ -28,7 +28,7 @@ spec:
       initialDelaySeconds: 300
       periodSeconds: 10
     minecraftServer:
-      image: itzg/minecraft-server:latest@sha256:8459b5edbcf88d900a54810b70482a78a67e0895961f7a3e086ad7fc9c3cc78a
+      image: itzg/minecraft-server:latest@sha256:a8973502f279a86c75e366a4d6837142c82e495053bf4b18f3959eb45dec07c2
       eula: "TRUE"
       version: "1.15.2"
       type: "PAPER"
