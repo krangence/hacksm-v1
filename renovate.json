@@ -1,93 +1,76 @@
 {
   "enabled": "true",
-  "pinDigests": "true",
-  "extends": [
-    "config:base",
-    ":assignee(chipwolf)"
-  ],
-  "kubernetes": {
-    "fileMatch": ["\\.yaml$"]
-  },
-  "regexManagers": [
-    {
-      "fileMatch": ["\\.yaml$"],
-      "matchStrings": [
-        "chart:\n *repository: (?<repository>.*?)\n *name: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "helm"
-    },
-    {
-      "fileMatch": ["\\.yaml$"],
-      "matchStrings": [
-        "chart:\n *git: git@github.com:(?<depName>.*?).git\n *ref: (?<currentValue>.*?)\n"
-      ],
-      "datasourceTemplate": "github-tags"
-    },
-    {
-      "fileMatch": ["^cloudbuild.yaml$"],
-      "matchStrings": [
-        "name: (?<depName>.*):(?<currentValue>.*)\n"
-      ],
-      "datasourceTemplate": "docker",
-      "versioningTemplate": "docker"
-    },
-    {
-      "fileMatch": ["(^|/)kustomization.yaml"],
-      "matchStrings": [
-        "- github.com\/(?<depName>.*?\/.*?)(?:\/|\\?).*?ref=(?<currentValue>.*?)\\s"
-      ],
-      "datasourceTemplate": "github-tags"
-    }
-  ],
+  "extends": [":assignee(chipwolf)", "config:base"],
+  "includeForks": "true",
+  "kubernetes": {"fileMatch": ["\\.yaml$"]},
+  "masterIssue": "true",
+  "masterIssueAutoclose": "true",
   "packageRules": [
+    {"automerge": true, "updateTypes": ["digest", "minor", "patch", "pin"]},
     {
-      "updateTypes": ["minor", "patch", "pin", "digest"],
-      "automerge": true
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": ["elasticsearch", "kibana", "logstash"],
+      "registryUrls": ["https://helm.elastic.co"]
     },
     {
       "datasources": ["helm"],
       "managers": ["regex"],
-      "packageNames": [
-        "sealed-secrets",
-        "kube-ops-view",
-        "metrics-server",
-        "prometheus-operator"
-      ],
-      "registryUrls": ["https://kubernetes-charts.storage.googleapis.com/"]
+      "packageNames": ["external-dns"],
+      "registryUrls": ["https://charts.bitnami.com/bitnami"]
     },
     {
       "datasources": ["helm"],
       "managers": ["regex"],
-      "packageNames": [
-        "ingress-nginx"
-      ],
+      "packageNames": ["ingress-nginx"],
       "registryUrls": ["https://kubernetes.github.io/ingress-nginx/"]
     },
     {
       "datasources": ["helm"],
       "managers": ["regex"],
       "packageNames": [
-        "external-dns"
+        "kube-ops-view",
+        "metrics-server",
+        "prometheus-operator",
+        "sealed-secrets"
       ],
-      "registryUrls": ["https://charts.bitnami.com/bitnami"]
+      "registryUrls": ["https://kubernetes-charts.storage.googleapis.com/"]
     },
     {
       "datasources": ["helm"],
       "managers": ["regex"],
-      "packageNames": [
-        "pomerium"
-      ],
+      "packageNames": ["pomerium"],
       "registryUrls": ["https://helm.pomerium.io"]
+    }
+  ],
+  "pinDigests": "true",
+  "regexManagers": [
+    {
+      "datasourceTemplate": "docker",
+      "fileMatch": ["^cloudbuild.yaml$"],
+      "matchStrings": ["name: (?<depName>.*):(?<currentValue>.*)\n"],
+      "versioningTemplate": "docker"
     },
     {
-      "datasources": ["helm"],
-      "managers": ["regex"],
-      "packageNames": [
-        "elasticsearch",
-        "logstash",
-        "kibana"
-      ],
-      "registryUrls": ["https://helm.elastic.co"]
+      "datasourceTemplate": "github-tags",
+      "fileMatch": ["(^|/)kustomization.yaml"],
+      "matchStrings": [
+        "- github.com/(?<depName>.*?/.*?)(?:/|\\?).*?ref=(?<currentValue>.*?)\\s"
+      ]
+    },
+    {
+      "datasourceTemplate": "github-tags",
+      "fileMatch": ["\\.yaml$"],
+      "matchStrings": [
+        "chart:\n *git: git@github.com:(?<depName>.*?).git\n *ref: (?<currentValue>.*?)\n"
+      ]
+    },
+    {
+      "datasourceTemplate": "helm",
+      "fileMatch": ["\\.yaml$"],
+      "matchStrings": [
+        "chart:\n *repository: (?<repository>.*?)\n *name: (?<depName>.*?)\n *version: (?<currentValue>.*)\n"
+      ]
     }
   ]
 }
