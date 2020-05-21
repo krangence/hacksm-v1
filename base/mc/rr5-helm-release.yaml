@@ -65,7 +65,7 @@ spec:
       cloudCommander:
         enabled: true
         auth: false
-        image: coderaiser/cloudcmd:14.5.1-alpine@sha256:4d78e27eeb4393ef330b8121c84b7a78b499ee6d364bea3f697523165e292d38
+        image: coderaiser/cloudcmd:14.6.0-alpine@sha256:f0fbdbac4058cf075988119a54965c1f822f01cd1082260fc5cb5eb4d6464f65
         serviceType: NodePort
         ingress:
           enabled: true
