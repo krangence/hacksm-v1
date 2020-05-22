@@ -15,10 +15,13 @@ spec:
       create: true
     ingress:
       enabled: true
+      hostname: ops.mc.playhrzn.com
       annotations:
+        ingress.pomerium.io/allowed_domains: '["chipwolf.uk"]'
+        ingress.pomerium.io/allow_websockets: "true"
+        nginx.ingress.kubernetes.io/auth-signin: https://forwardauth.mc.playhrzn.com/?uri=$scheme://$host$request_uri
+        nginx.ingress.kubernetes.io/auth-url: https://forwardauth.mc.playhrzn.com/verify?uri=$scheme://$host$request_uri
         forecastle.stakater.com/expose: "true"
         forecastle.stakater.com/appName: "Kube Ops View"
         forecastle.stakater.com/icon: https://hub.helm.sh/api/chartsvc/v1/assets/stable/kube-ops-view/logo
-        forecastle.stakater.com/url: https://ops.mc.playhrzn.com
-        kubernetes.io/ingress.class: "nginx"
         external-dns.alpha.kubernetes.io/hostname: ops.mc.playhrzn.com

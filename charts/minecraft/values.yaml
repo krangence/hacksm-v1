@@ -175,8 +175,10 @@ minecraftServer:
       enabled: false
       annotations: {}
     webIngress:
+      hostname: rcon-web-admin.local
       annotations: {}
     websocketIngress:
+      hostname: rcon-web-admin-ws.local
       annotations: {}
 
   cloudCommander:
@@ -198,6 +200,7 @@ minecraftServer:
     annotations: {}
     ingress:
       enabled: false
+      hostname: cloudcmd.local
       annotations: {}
 
   query:

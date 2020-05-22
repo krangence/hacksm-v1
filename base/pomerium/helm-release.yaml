@@ -22,67 +22,10 @@ spec:
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
         nginx.ingress.kubernetes.io/proxy-buffer-size: "16K"
     forwardAuth:
-      enabled: false
+      enabled: true
     service:
       type: NodePort
     config:
       rootDomain: mc.playhrzn.com
-      policy:
-        - from: https://st-rwa.mc.playhrzn.com
-          to: http://mc-st-minecraft-rcon-web-admin.mc.svc.cluster.local:4326
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
-        - from: https://st-files.mc.playhrzn.com
-          to: http://mc-st-minecraft-cloudcmd.mc.svc.cluster.local
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
-        - from: https://jingle-rwa.mc.playhrzn.com
-          to: http://mc-jingle-minecraft-rcon-web-admin.mc.svc.cluster.local:4326
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
-        - from: https://jingle-files.mc.playhrzn.com
-          to: http://mc-jingle-minecraft-cloudcmd.mc.svc.cluster.local
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
-        - from: https://rr5-rwa.mc.playhrzn.com
-          to: http://mc-rr5-minecraft-rcon-web-admin.mc.svc.cluster.local:4326
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
-        - from: https://rr5-files.mc.playhrzn.com
-          to: http://mc-rr5-minecraft-cloudcmd.mc.svc.cluster.local
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
-        - from: https://yogs-rwa.mc.playhrzn.com
-          to: http://mc-yogs-minecraft-rcon-web-admin.mc.svc.cluster.local:4326
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
-        - from: https://yogs-files.mc.playhrzn.com
-          to: http://mc-yogs-minecraft-cloudcmd.mc.svc.cluster.local
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
-        - from: https://ops.mc.playhrzn.com
-          to: http://kube-ops-view.monitoring.svc.cluster.local
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
-          allow_websockets: true
-        - from: https://grafana.mc.playhrzn.com
-          to: http://prometheus-operator-grafana.monitoring.svc.cluster.local
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
-        - from: https://kibana.mc.playhrzn.com
-          to: http://kibana-kibana.elastic-stack.svc.cluster.local:5601
-          allowed_domains:
-            - chipwolf.uk
-            - hrznstudio.com
     operator:
       enabled: true

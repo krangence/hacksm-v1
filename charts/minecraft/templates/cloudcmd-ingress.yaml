@@ -17,7 +17,12 @@ metadata:
     heritage: "{{ .Release.Service }}"
 spec:
   rules:
+  {{- if .Values.minecraftServer.cloudCommander.ingress.hostname }}
+  - host: {{ .Values.minecraftServer.cloudCommander.ingress.hostname }}
+    http:
+  {{- else }}
   - http:
+  {{- end }}
       paths:
         - path: /
           backend:

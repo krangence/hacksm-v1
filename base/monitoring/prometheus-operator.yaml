@@ -25,13 +25,14 @@ spec:
           org_role: Viewer
       ingress:
         enabled: true
-        hosts: ["grafana.local"]
+        hosts: ["grafana.mc.playhrzn.com"]
         annotations:
+          ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
+          nginx.ingress.kubernetes.io/auth-signin: https://forwardauth.mc.playhrzn.com/?uri=$scheme://$host$request_uri
+          nginx.ingress.kubernetes.io/auth-url: https://forwardauth.mc.playhrzn.com/verify?uri=$scheme://$host$request_uri
           forecastle.stakater.com/expose: "true"
           forecastle.stakater.com/appName: Grafana
           forecastle.stakater.com/icon: https://raw.githubusercontent.com/stakater/ForecastleIcons/master/grafana.png
-          forecastle.stakater.com/url: https://grafana.mc.playhrzn.com
-          kubernetes.io/ingress.class: "nginx"
           external-dns.alpha.kubernetes.io/hostname: grafana.mc.playhrzn.com
     nodeExporter:
       serviceMonitor:

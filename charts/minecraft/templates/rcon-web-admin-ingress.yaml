@@ -23,7 +23,12 @@ metadata:
     heritage: "{{ .Release.Service }}"
 spec:
   rules:
+  {{- if .Values.minecraftServer.rconWebAdmin.webIngress.hostname }}
+  - host: {{ .Values.minecraftServer.rconWebAdmin.webIngress.hostname }}
+    http:
+  {{- else }}
   - http:
+  {{- end }}
       paths:
       - path: /
         backend:
