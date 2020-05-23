@@ -12,6 +12,9 @@ spec:
     path: deployments/kubernetes/chart/forecastle
   values:
     forecastle:
+      image:
+        name: cwlf/forecastle
+        tag: "dev"
       ingress:
         enabled: true
         annotations:
