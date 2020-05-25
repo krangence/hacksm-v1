@@ -1,6 +1,6 @@
 {
   "enabled": "true",
-  "extends": [":assignee(chipwolf)", "config:base"],
+  "extends": [":assignee(krangence)", "config:base"],
   "includeForks": "true",
   "kubernetes": {"fileMatch": ["\\.yaml$"]},
   "masterIssue": "true",
