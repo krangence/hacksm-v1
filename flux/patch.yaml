@@ -11,9 +11,9 @@ spec:
         - name: flux
           args:
             - --ssh-keygen-dir=/var/fluxd/keygen
-            - --git-url=git@github.com:HRZNStudio/playhrzn-k8s.git
+            - --git-url=git@github.com:krangence/k8s-flux.git
             - --git-label=flux-sync
-            - --git-email=accounts@hrznstudio.com
+            - --git-email=matt@matt-white.co.uk
             - --git-poll-interval=30s
             - --sync-garbage-collection
             - --manifest-generation=true
