@@ -30,6 +30,8 @@ spec:
         https: 80
         tohttps: 2443
       config:
+        global-auth-signin: https://forwardauth.mc.playhrzn.com/?uri=$scheme://$host$request_uri
+        global-auth-url: https://forwardauth.mc.playhrzn.com/verify?uri=$scheme://$host$request_uri
         use-proxy-protocol: "true"
         proxy-real-ip-cidr: 192.168.0.0/16
         use-forwarded-headers: "true"

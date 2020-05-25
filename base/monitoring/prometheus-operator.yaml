@@ -28,8 +28,6 @@ spec:
         hosts: ["grafana.mc.playhrzn.com"]
         annotations:
           ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
-          nginx.ingress.kubernetes.io/auth-signin: https://forwardauth.mc.playhrzn.com/?uri=$scheme://$host$request_uri
-          nginx.ingress.kubernetes.io/auth-url: https://forwardauth.mc.playhrzn.com/verify?uri=$scheme://$host$request_uri
           forecastle.stakater.com/expose: "true"
           forecastle.stakater.com/appName: Grafana
           forecastle.stakater.com/icon: https://raw.githubusercontent.com/stakater/ForecastleIcons/master/grafana.png

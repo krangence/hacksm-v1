@@ -51,8 +51,6 @@ spec:
           hostname: st-rwa.mc.playhrzn.com
           annotations:
             ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
-            nginx.ingress.kubernetes.io/auth-signin: https://forwardauth.mc.playhrzn.com/?uri=$scheme://$host$request_uri
-            nginx.ingress.kubernetes.io/auth-url: https://forwardauth.mc.playhrzn.com/verify?uri=$scheme://$host$request_uri
             forecastle.stakater.com/expose: "true"
             forecastle.stakater.com/icon: https://brainfoolong.github.io/rcon-web-admin/images/logo.png
             forecastle.stakater.com/appName: "RCON Web Admin"
@@ -73,8 +71,6 @@ spec:
           hostname: st-files.mc.playhrzn.com
           annotations:
             ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
-            nginx.ingress.kubernetes.io/auth-signin: https://forwardauth.mc.playhrzn.com/?uri=$scheme://$host$request_uri
-            nginx.ingress.kubernetes.io/auth-url: https://forwardauth.mc.playhrzn.com/verify?uri=$scheme://$host$request_uri
             external-dns.alpha.kubernetes.io/hostname: st-files.mc.playhrzn.com
             forecastle.stakater.com/expose: "true"
             forecastle.stakater.com/icon: https://cloudcmd.io/img/logo/cloudcmd.png

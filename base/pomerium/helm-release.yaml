@@ -20,6 +20,7 @@ spec:
         kubernetes.io/ingress.allow-http: "false"
         external-dns.alpha.kubernetes.io/hostname: 'forwardauth.mc.playhrzn.com,authorize.mc.playhrzn.com,authenticate.mc.playhrzn.com'
         nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+        nginx.ingress.kubernetes.io/enable-global-auth: "false"
         nginx.ingress.kubernetes.io/proxy-buffer-size: "16K"
     forwardAuth:
       enabled: true
