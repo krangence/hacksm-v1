@@ -13,9 +13,9 @@ spec:
   values:
     ingress:
       enabled: true
-      hosts: ["kibana.mc.playhrzn.com"]
+      hosts: ["kibana.hacksm.net"]
       annotations:
-        ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
+        ingress.pomerium.io/allowed_users: '["matt@matt-white.co.uk"]'
         forecastle.stakater.com/expose: "true"
         forecastle.stakater.com/icon: https://github.com/stakater/ForecastleIcons/raw/master/kibana.png
         forecastle.stakater.com/appName: "Kibana"

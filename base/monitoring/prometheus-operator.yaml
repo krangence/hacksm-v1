@@ -25,9 +25,9 @@ spec:
           org_role: Viewer
       ingress:
         enabled: true
-        hosts: ["grafana.mc.playhrzn.com"]
+        hosts: ["grafana.hacksm.net"]
         annotations:
-          ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
+          ingress.pomerium.io/allowed_users: '["matt@matt-white.co.uk"]'
           forecastle.stakater.com/expose: "true"
           forecastle.stakater.com/appName: Grafana
           forecastle.stakater.com/icon: https://raw.githubusercontent.com/stakater/ForecastleIcons/master/grafana.png

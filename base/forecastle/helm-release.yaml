@@ -18,8 +18,8 @@ spec:
       ingress:
         enabled: true
         annotations:
-          ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
+          ingress.pomerium.io/allowed_users: '["matt@matt-white.co.uk"]'
         hosts:
-          - host: apps.mc.playhrzn.com
+          - host: apps.hacksm.net
             paths:
               - /
