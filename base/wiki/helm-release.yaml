@@ -1,0 +1,26 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: wiki
+  namespace: wiki
+spec:
+  releaseName: wiki
+  chart:
+    git: git@github.com:fuziontech/wiki.git
+    ref: master
+    path: dev/helm
+  values:
+    ingress:
+      enabled: enable
+      annotations:
+        ingress.pomerium.io/allowed_users: '["matt@matt-white.co.uk"]'
+        forecastle.stakater.com/expose: "true"
+        forecastle.stakater.com/icon: https://static.requarks.io/logo/wikijs-full.svg
+        forecastle.stakater.com/appName: "wikijs"
+      hosts:
+        - host: wiki.hacksm.net
+          paths: ["/"]
+    postgresql:
+      persistence:
+        storageClass: ebs-sc
