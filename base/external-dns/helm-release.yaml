@@ -11,5 +11,5 @@ spec:
     name: external-dns
     version: 3.1.1
   values:
-    domainFilters: ["playhrzn.com"]
+    domainFilters: ["hacksm.net"]
     policy: sync

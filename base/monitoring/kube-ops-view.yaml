@@ -15,9 +15,9 @@ spec:
       create: true
     ingress:
       enabled: true
-      hostname: ops.playhrzn.com
+      hostname: ops.hacksm.net
       annotations:
-        ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
+        ingress.pomerium.io/allowed_users: '["matt@matt-white.co.uk"]'
         ingress.pomerium.io/allow_websockets: "true"
         forecastle.stakater.com/expose: "true"
         forecastle.stakater.com/appName: "Kube Ops View"
