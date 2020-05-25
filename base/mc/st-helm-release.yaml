@@ -55,12 +55,10 @@ spec:
             forecastle.stakater.com/icon: https://brainfoolong.github.io/rcon-web-admin/images/logo.png
             forecastle.stakater.com/appName: "RCON Web Admin"
             forecastle.stakater.com/group: "st"
-            external-dns.alpha.kubernetes.io/hostname: st-rwa.mc.playhrzn.com
         websocketIngress:
           hostname: st-rwa-ws.mc.playhrzn.com
           annotations:
             kubernetes.io/ingress.class: "nginx"
-            external-dns.alpha.kubernetes.io/hostname: st-rwa-ws.mc.playhrzn.com
       cloudCommander:
         enabled: true
         auth: false
@@ -71,7 +69,6 @@ spec:
           hostname: st-files.mc.playhrzn.com
           annotations:
             ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
-            external-dns.alpha.kubernetes.io/hostname: st-files.mc.playhrzn.com
             forecastle.stakater.com/expose: "true"
             forecastle.stakater.com/icon: https://cloudcmd.io/img/logo/cloudcmd.png
             forecastle.stakater.com/appName: "File Manager"

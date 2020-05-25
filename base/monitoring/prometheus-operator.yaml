@@ -31,7 +31,6 @@ spec:
           forecastle.stakater.com/expose: "true"
           forecastle.stakater.com/appName: Grafana
           forecastle.stakater.com/icon: https://raw.githubusercontent.com/stakater/ForecastleIcons/master/grafana.png
-          external-dns.alpha.kubernetes.io/hostname: grafana.mc.playhrzn.com
     nodeExporter:
       serviceMonitor:
         relabelings:

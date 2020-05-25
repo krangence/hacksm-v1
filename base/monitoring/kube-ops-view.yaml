@@ -22,4 +22,3 @@ spec:
         forecastle.stakater.com/expose: "true"
         forecastle.stakater.com/appName: "Kube Ops View"
         forecastle.stakater.com/icon: https://hub.helm.sh/api/chartsvc/v1/assets/stable/kube-ops-view/logo
-        external-dns.alpha.kubernetes.io/hostname: ops.mc.playhrzn.com
