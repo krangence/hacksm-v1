@@ -19,7 +19,6 @@ spec:
         enabled: true
         annotations:
           ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
-          external-dns.alpha.kubernetes.io/hostname: apps.mc.playhrzn.com
         hosts:
           - host: apps.mc.playhrzn.com
             paths:

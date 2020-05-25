@@ -16,7 +16,6 @@ spec:
       hosts: ["kibana.mc.playhrzn.com"]
       annotations:
         ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
-        external-dns.alpha.kubernetes.io/hostname: kibana.mc.playhrzn.com
         forecastle.stakater.com/expose: "true"
         forecastle.stakater.com/icon: https://github.com/stakater/ForecastleIcons/raw/master/kibana.png
         forecastle.stakater.com/appName: "Kibana"
