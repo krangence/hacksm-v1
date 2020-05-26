@@ -215,6 +215,15 @@ spec:
     {{- end }}
     {{- if .Values.affinity }}
       affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - {{ template "minecraft.fullname" . }}
+              topologyKey: "kubernetes.io/hostname"
 {{ toYaml .Values.affinity | indent 8 }}
     {{- end }}
     {{- if .Values.tolerations }}
@@ -367,6 +376,15 @@ spec:
     {{- end }}
     {{- if .Values.affinity }}
       affinity:
+        podAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - {{ template "minecraft.fullname" . }}
+              topologyKey: "kubernetes.io/hostname"
 {{ toYaml .Values.affinity | indent 8 }}
     {{- end }}
     {{- if .Values.tolerations }}

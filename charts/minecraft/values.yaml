@@ -2,6 +2,8 @@
 # ref: https://hub.docker.com/r/itzg/minecraft-server/
 image: itzg/minecraft-server:latest
 
+domain: example.org
+
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
@@ -30,8 +32,8 @@ livenessProbe:
     - mcstatus
     - localhost:25565
     - status
-  initialDelaySeconds: 30
-  periodSeconds: 5
+  initialDelaySeconds: 300
+  periodSeconds: 10
   failureThreshold: 10
   successThreshold: 1
   timeoutSeconds: 1
@@ -40,8 +42,8 @@ readinessProbe:
     - mcstatus
     - localhost:25565
     - status
-  initialDelaySeconds: 30
-  periodSeconds: 5
+  initialDelaySeconds: 300
+  periodSeconds: 10
   failureThreshold: 10
   successThreshold: 1
   timeoutSeconds: 1
@@ -79,11 +81,11 @@ minecraftServer:
   # Max connected players.
   maxPlayers: 20
   # This sets the maximum possible size in blocks, expressed as a radius, that the world border can obtain.
-  maxWorldSize: 10000
+  maxWorldSize: 29999984
   # Allows players to travel to the Nether.
   allowNether: true
   # Allows server to announce when a player gets an achievement.
-  announcePlayerAchievements: true
+  announcePlayerAchievements: false
   # Enables command blocks.
   enableCommandBlock: true
   # If true, players will always join in the default gameMode even if they were previously set to something else.
@@ -111,7 +113,7 @@ minecraftServer:
   # Message of the Day
   # motd: "Welcome to Minecraft on Kubernetes!"
   # If true, enable player-vs-player damage.
-  pvp: false
+  pvp: true
   # One of: DEFAULT, FLAT, LARGEBIOMES, AMPLIFIED, CUSTOMIZED
   levelType: DEFAULT
   # When levelType == FLAT or CUSTOMIZED, this can be used to further customize map generation.
@@ -143,10 +145,10 @@ minecraftServer:
 
   rcon:
     # If you enable this, make SURE to change your password below.
-    enabled: false
+    enabled: true
     port: 25575
     password: "CHANGEME!"
-    serviceType: LoadBalancer
+    serviceType: NodePort
     loadBalancerIP:
     # loadBalancerSourceRanges: []
     ## Set the externalTrafficPolicy in the Service to either Cluster or Local
@@ -155,7 +157,7 @@ minecraftServer:
 
   rconWebAdmin:
     # If you enable this, make SURE to change your password below.
-    enabled: false
+    enabled: true
     username: "admin"
     password: "CHANGEME!"
     image: itzg/rcon:latest
@@ -165,7 +167,7 @@ minecraftServer:
     admin: false
     websocketUrlSsl:
     websocketUrl:
-    serviceType: LoadBalancer
+    serviceType: NodePort
     loadBalancerIP:
     # loadBalancerSourceRanges: []
     ## Set the externalTrafficPolicy in the Service to either Cluster or Local
@@ -183,8 +185,8 @@ minecraftServer:
 
   cloudCommander:
     # If you enable this, make SURE to change your password below.
-    enabled: false
-    auth: true
+    enabled: true
+    auth: false
     port: 80
     username: "admin"
     password: "CHANGEME!"
@@ -192,14 +194,14 @@ minecraftServer:
     enableConsole: false
     enableTerminal: false
     enableConfigDialog: false
-    serviceType: LoadBalancer
+    serviceType: NodePort
     loadBalancerIP:
     # loadBalancerSourceRanges: []
     ## Set the externalTrafficPolicy in the Service to either Cluster or Local
     # externalTrafficPolicy: Cluster
     annotations: {}
     ingress:
-      enabled: false
+      enabled: true
       hostname: cloudcmd.local
       annotations: {}
 
@@ -220,11 +222,11 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  # storageClass: "-"
+  storageClass: ebs-sc
   dataDir:
     # Set this to false if you don't care to persist state between restarts.
     enabled: true
-    Size: 1Gi
+    Size: 5Gi
 
 podAnnotations: {}
 

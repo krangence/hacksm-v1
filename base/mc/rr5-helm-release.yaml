@@ -5,49 +5,25 @@ metadata:
   name: rr5
   namespace: mc
 spec:
+  releaseName: rr5
   chart:
     git: git@github.com:HRZNStudio/playhrzn-k8s
     ref: master
     path: charts/minecraft
   values:
     # ref: charts/minecraft/values.yaml
-    affinity:
-      podAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-                - key: app
-                  operator: In
-                  values:
-                    - mc-rr5-minecraft
-            topologyKey: "kubernetes.io/hostname"
-    livenessProbe:
-      initialDelaySeconds: 300
-      periodSeconds: 10
-    readinessProbe:
-      initialDelaySeconds: 300
-      periodSeconds: 10
+    domain: mc.playhrzn.com
     minecraftServer:
       image: itzg/minecraft-server:latest@sha256:a8973502f279a86c75e366a4d6837142c82e495053bf4b18f3959eb45dec07c2
       eula: "TRUE"
       version: "1.12.2"
       type: "FORGE"
       forgeVersion: "14.23.5.2847"
-      maxWorldSize: 29999984
       maxtickTime: -1
       memory: 8G
-      annotations:
-        external-dns.alpha.kubernetes.io/hostname: rr5.mc.playhrzn.com
-      rcon:
-        enabled: true
-        serviceType: NodePort
       rconWebAdmin:
-        enabled: true
         image: cwlf/rcon:latest@sha256:e6d0d325f9686c00f8b4b50afd9ef7a03a5bf0c305e7567db008d8679163c6b1
         websocketUrlSsl: "wss://rr5-rwa-ws.mc.playhrzn.com"
-        serviceType: NodePort
-        ingress:
-          enabled: true
         webIngress:
           hostname: rr5-rwa.mc.playhrzn.com
           annotations:
@@ -61,12 +37,8 @@ spec:
           annotations:
             kubernetes.io/ingress.class: "nginx"
       cloudCommander:
-        enabled: true
-        auth: false
         image: coderaiser/cloudcmd:14.6.0-alpine@sha256:f0fbdbac4058cf075988119a54965c1f822f01cd1082260fc5cb5eb4d6464f65
-        serviceType: NodePort
         ingress:
-          enabled: true
           hostname: rr5-files.mc.playhrzn.com
           annotations:
             ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
@@ -80,10 +52,6 @@ spec:
       OVERRIDE_SERVER_PROPERTIES: "1"
       USE_AIKAR_FLAGS: "1"
     persistence:
-      dataDir:
-        enabled: true
-        Size: 5Gi
-      storageClass: ebs-sc
       volumeName: pvc-bc6ba9b7-c4ce-425b-b300-6b21d83df743
 ---
 apiVersion: "autoscaling.k8s.io/v1beta2"
