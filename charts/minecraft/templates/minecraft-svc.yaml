@@ -2,9 +2,9 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ template "minecraft.fullname" . }}
-  {{- if .Values.minecraftServer.annotations }}
   annotations:
     external-dns.alpha.kubernetes.io/hostname: "{{ .Release.Name }}.{{ .Values.domain }}"
+  {{- if .Values.minecraftServer.annotations }}
     {{- range $key, $value := .Values.minecraftServer.annotations }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}

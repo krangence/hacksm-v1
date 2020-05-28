@@ -213,7 +213,6 @@ spec:
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
     {{- end }}
-    {{- if .Values.affinity }}
       affinity:
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -224,6 +223,7 @@ spec:
                     values:
                       - {{ template "minecraft.fullname" . }}
               topologyKey: "kubernetes.io/hostname"
+    {{- if .Values.affinity }}
 {{ toYaml .Values.affinity | indent 8 }}
     {{- end }}
     {{- if .Values.tolerations }}
@@ -374,7 +374,6 @@ spec:
       nodeSelector:
 {{ toYaml .Values.nodeSelector | indent 8 }}
     {{- end }}
-    {{- if .Values.affinity }}
       affinity:
         podAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -385,6 +384,7 @@ spec:
                     values:
                       - {{ template "minecraft.fullname" . }}
               topologyKey: "kubernetes.io/hostname"
+    {{- if .Values.affinity }}
 {{ toYaml .Values.affinity | indent 8 }}
     {{- end }}
     {{- if .Values.tolerations }}
