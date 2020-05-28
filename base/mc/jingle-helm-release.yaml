@@ -43,7 +43,7 @@ spec:
         ingress:
           hostname: jingle-files.mc.playhrzn.com
           annotations:
-            ingress.pomerium.io/allowed_domains: '["chipwolf.uk"]'
+            ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
             forecastle.stakater.com/expose: "true"
             forecastle.stakater.com/icon: https://cloudcmd.io/img/logo/cloudcmd.png
             forecastle.stakater.com/appName: "File Manager"

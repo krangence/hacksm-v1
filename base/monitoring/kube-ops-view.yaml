@@ -17,7 +17,7 @@ spec:
       enabled: true
       hostname: ops.mc.playhrzn.com
       annotations:
-        ingress.pomerium.io/allowed_domains: '["chipwolf.uk"]'
+        ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
         ingress.pomerium.io/allow_websockets: "true"
         forecastle.stakater.com/expose: "true"
         forecastle.stakater.com/appName: "Kube Ops View"
