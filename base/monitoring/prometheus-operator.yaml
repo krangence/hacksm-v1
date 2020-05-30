@@ -25,7 +25,7 @@ spec:
           org_role: Viewer
       ingress:
         enabled: true
-        hosts: ["grafana.mc.playhrzn.com"]
+        hosts: ["grafana.playhrzn.com"]
         annotations:
           ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
           forecastle.stakater.com/expose: "true"

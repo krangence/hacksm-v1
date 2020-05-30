@@ -13,7 +13,7 @@ spec:
   values:
     ingress:
       enabled: true
-      hosts: ["kibana.mc.playhrzn.com"]
+      hosts: ["kibana.playhrzn.com"]
       annotations:
         ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
         forecastle.stakater.com/expose: "true"

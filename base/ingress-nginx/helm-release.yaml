@@ -19,7 +19,7 @@ spec:
           service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
           service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
           service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
-          service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:eu-west-2:521397258504:certificate/30948eb5-f96e-423d-8eec-cb26cb459de6
+          service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:eu-west-2:521397258504:certificate/7b9e82de-e0a2-4818-94ca-be0b5029f95c
           service.beta.kubernetes.io/aws-load-balancer-type: elb
           service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: '3600'
         targetPorts:
@@ -30,8 +30,8 @@ spec:
         https: 80
         tohttps: 2443
       config:
-        global-auth-signin: https://forwardauth.mc.playhrzn.com/?uri=$scheme://$host$request_uri
-        global-auth-url: https://forwardauth.mc.playhrzn.com/verify?uri=$scheme://$host$request_uri
+        global-auth-signin: https://forwardauth.playhrzn.com/?uri=$scheme://$host$request_uri
+        global-auth-url: https://forwardauth.playhrzn.com/verify?uri=$scheme://$host$request_uri
         use-proxy-protocol: "true"
         proxy-real-ip-cidr: 192.168.0.0/16
         use-forwarded-headers: "true"

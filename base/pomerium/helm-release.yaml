@@ -26,6 +26,6 @@ spec:
     service:
       type: NodePort
     config:
-      rootDomain: mc.playhrzn.com
+      rootDomain: playhrzn.com
     operator:
       enabled: true

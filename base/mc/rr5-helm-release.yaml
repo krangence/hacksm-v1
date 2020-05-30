@@ -12,7 +12,7 @@ spec:
     path: charts/minecraft
   values:
     # ref: charts/minecraft/values.yaml
-    domain: mc.playhrzn.com
+    domain: playhrzn.com
     minecraftServer:
       image: itzg/minecraft-server:latest@sha256:a8973502f279a86c75e366a4d6837142c82e495053bf4b18f3959eb45dec07c2
       eula: "TRUE"
@@ -23,9 +23,9 @@ spec:
       memory: 8G
       rconWebAdmin:
         image: cwlf/rcon:latest@sha256:e6d0d325f9686c00f8b4b50afd9ef7a03a5bf0c305e7567db008d8679163c6b1
-        websocketUrlSsl: "wss://rr5-rwa-ws.mc.playhrzn.com"
+        websocketUrlSsl: "wss://rr5-rwa-ws.playhrzn.com"
         webIngress:
-          hostname: rr5-rwa.mc.playhrzn.com
+          hostname: rr5-rwa.playhrzn.com
           annotations:
             ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
             forecastle.stakater.com/expose: "true"
@@ -33,13 +33,13 @@ spec:
             forecastle.stakater.com/appName: "RCON Web Admin"
             forecastle.stakater.com/group: "rr5"
         websocketIngress:
-          hostname: rr5-rwa-ws.mc.playhrzn.com
+          hostname: rr5-rwa-ws.playhrzn.com
           annotations:
             kubernetes.io/ingress.class: "nginx"
       cloudCommander:
         image: coderaiser/cloudcmd:14.6.0-alpine@sha256:f0fbdbac4058cf075988119a54965c1f822f01cd1082260fc5cb5eb4d6464f65
         ingress:
-          hostname: rr5-files.mc.playhrzn.com
+          hostname: rr5-files.playhrzn.com
           annotations:
             ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
             forecastle.stakater.com/expose: "true"

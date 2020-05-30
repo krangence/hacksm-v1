@@ -11,5 +11,5 @@ spec:
     name: external-dns
     version: 3.0.2
   values:
-    domainFilters: ["mc.playhrzn.com"]
+    domainFilters: ["playhrzn.com"]
     policy: sync

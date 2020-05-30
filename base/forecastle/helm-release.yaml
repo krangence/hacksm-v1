@@ -20,6 +20,6 @@ spec:
         annotations:
           ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
         hosts:
-          - host: apps.mc.playhrzn.com
+          - host: apps.playhrzn.com
             paths:
               - /

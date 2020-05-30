@@ -15,7 +15,7 @@ spec:
       create: true
     ingress:
       enabled: true
-      hostname: ops.mc.playhrzn.com
+      hostname: ops.playhrzn.com
       annotations:
         ingress.pomerium.io/allowed_domains: '["chipwolf.uk", "hrznstudio.com"]'
         ingress.pomerium.io/allow_websockets: "true"
