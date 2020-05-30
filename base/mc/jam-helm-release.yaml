@@ -52,6 +52,7 @@ spec:
             forecastle.stakater.com/group: "jam"
     extraEnv:
       PAPERBUILD: "273"
+      SPAWN_PROTECTION: "0"
       GENERIC_PACK: "https://cdn.hrzn.studio/jam-server-staging.zip"
       GENERIC_PACK_STRIP_DIRS: "0"
       OVERRIDE_SERVER_PROPERTIES: "1"
