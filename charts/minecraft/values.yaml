@@ -174,7 +174,7 @@ minecraftServer:
     # externalTrafficPolicy: Cluster
     annotations: {}
     ingress:
-      enabled: false
+      enabled: true
       annotations: {}
     webIngress:
       hostname: rcon-web-admin.local
