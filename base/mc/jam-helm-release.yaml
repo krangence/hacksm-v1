@@ -22,6 +22,7 @@ spec:
       motd: '\\u00A77\\u00A7l\\u00A7m----\\u00A79\\u00A78\\u00A7l[\\u00A7r \\u00A76\\u00A7lPlay\\u00A7b\\u00A7lHRZN\\u00A77.com \\u00A78\\u00A7l]\\u00A77\\u00A7l\\u00A7m----\\u00A78\\u00A7l[ \\u00A7fJingle \\u00A7cJam \\u00A78\\u00A7l]\\u00A77\\u00A7l\\u00A7m----\\n\\u00A77\\u00A7l\\u00A7m --------\\u00A78\\u00A7l[\\u00A7r \\u00A7d\\u00A7lHUNGER GAMES ALPHA \\u00A78\\u00A7l]\\u00A77\\u00A7l\\u00A7m------'
       maxtickTime: -1
       memory: 6G
+      allowNether: false
       spawnAnimals: false
       spawnMonsters: false
       spawnNPCs: false
