@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://charts.bitnami.com/bitnami
     name: external-dns
-    version: 3.1.1
+    version: 3.1.2
   values:
     domainFilters: ["playhrzn.com"]
     policy: sync
