@@ -16,7 +16,7 @@ spec:
     minecraftServer:
       image: itzg/minecraft-server:latest@sha256:46102319e361f9781c6f3ee65d426e38b9bf5d47b17b7ccf7961e8e5a106e5ea
       eula: "TRUE"
-      version: "1.12.2"
+      version: "1.14.4"
       type: "PAPER"
       maxtickTime: -1
       memory: 5G
@@ -49,7 +49,7 @@ spec:
       GENERIC_PACK: "https://cdn.hrzn.studio/st-server-staging.zip"
       GENERIC_PACK_STRIP_DIRS: "0"
       OVERRIDE_SERVER_PROPERTIES: "1"
-      PAPERBUILD: "1618"
+      PAPERBUILD: "243"
       USE_AIKAR_FLAGS: "1"
     persistence:
       volumeName: pvc-b9e227a7-170c-4aba-babb-f334b17af46a
