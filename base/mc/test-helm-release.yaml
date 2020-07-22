@@ -1,0 +1,19 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: test
+  namespace: mc
+spec:
+  releaseName: test
+  chart:
+    git: git@github.com:HRZNStudio/playhrzn-k8s
+    ref: master
+    path: charts/minecraft
+  values:
+    domain: playhrzn.com
+    minecraftServer:
+      image: itzg/minecraft-server:latest
+      eula: "TRUE"
+      version: "1.14.4"
+      type: "PAPER"
