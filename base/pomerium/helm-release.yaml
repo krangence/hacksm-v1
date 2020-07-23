@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://helm.pomerium.io
     name: pomerium
-    version: 10.1.4
+    version: 10.2.0
   valuesFrom:
     - secretKeyRef:
         name: pomerium-values
