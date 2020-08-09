@@ -7,7 +7,7 @@ metadata:
 spec:
   chart:
     git: git@github.com:kubernetes-sigs/aws-ebs-csi-driver.git
-    ref: v0.5.0
+    ref: v0.6.0
     path: aws-ebs-csi-driver
   values:
     # ref: https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/aws-ebs-csi-driver/values.yaml
