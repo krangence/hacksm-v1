@@ -12,5 +12,5 @@ steps:
   - name: garethr/kubeval:0.15.0
     args: [-d, 'base,flux', -i, '.flux.yaml,cloudbuild.yaml,kustomization.yaml,patch.yaml,^*.-crd.yaml$', --skip-kinds, 'HelmRelease,SealedSecret,VerticalPodAutoscaler']
 
-  - name: cytopia/yamllint:1.20
+  - name: cytopia/yamllint:1.23
     args: ['.']
