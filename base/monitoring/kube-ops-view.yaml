@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: kube-ops-view
-    version: 1.1.5
+    version: 1.2.0
   values:
     rbac:
       create: true
