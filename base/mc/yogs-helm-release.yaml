@@ -37,7 +37,7 @@ spec:
           annotations:
             kubernetes.io/ingress.class: "nginx"
       cloudCommander:
-        image: coderaiser/cloudcmd:14.9.1-alpine@sha256:5babeb13b3f3685761943e6808229ab7f0d8cfdeebd4768b81903fc301bb43d3
+        image: coderaiser/cloudcmd:14.9.2-alpine@sha256:de15a93bb621252adc3c35e1dbd03f2e6d157620fb310abc6bac9e8e4b9fee21
         ingress:
           hostname: yogs-files.playhrzn.com
           annotations:
