@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://kubernetes-charts.storage.googleapis.com/
     name: prometheus-operator
-    version: 8.16.1
+    version: 9.3.2
   values:
     grafana:
       enabled: true
