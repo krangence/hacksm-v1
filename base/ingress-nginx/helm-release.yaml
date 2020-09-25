@@ -13,15 +13,12 @@ spec:
   values:
     fullnameOverride: ingress-nginx
     controller:
+      dnsPolicy: ClusterFirstWithHostNet
+      reportNodeInternalIp: true
+      hostNetwork: true
+      hostPort:
+        enabled: true
       service:
-        annotations:
-          service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
-          service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
-          service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
-          service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
-          service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:eu-west-2:474108156746:certificate/d71c30a1-40eb-49ea-9ee3-3f386378134a
-          service.beta.kubernetes.io/aws-load-balancer-type: elb
-          service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: '3600'
         targetPorts:
           http: tohttps
           https: http
