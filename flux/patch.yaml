@@ -14,7 +14,7 @@ spec:
             - --git-url=git@github.com:krangence/k8s-flux.git
             - --git-label=flux-sync
             - --git-email=matt@matt-white.co.uk
-            - --git-poll-interval=30s
+            - --git-poll-interval=5m
             - --sync-garbage-collection
             - --manifest-generation=true
             - --listen-metrics=:3031
