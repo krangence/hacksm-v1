@@ -10,6 +10,12 @@ spec:
     repository: https://charts.bitnami.com/bitnami
     name: external-dns
     version: 3.4.2
+  valuesFrom:
+    - secretKeyRef:
+        name: external-dns-values
   values:
     domainFilters: ["hacksm.net"]
     policy: sync
+    aws:
+      credentials:
+        accessKey: AKIAW4YYMLNFPY4BD76X
