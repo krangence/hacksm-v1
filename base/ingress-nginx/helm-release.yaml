@@ -24,7 +24,7 @@ spec:
           https: http
       containerPort:
         http: 80
-        https: 80
+        https: 443
         tohttps: 2443
       config:
         global-auth-signin: https://forwardauth.hacksm.net/?uri=$scheme://$host$request_uri
