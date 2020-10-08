@@ -1,0 +1,11 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: s3-fuse-flex-volume
+  namespace: kube-system
+spec:
+  chart:
+    git: git@github.com:zachomedia/s3-fuse-flex-volume.git
+    ref: master
+    path: helm-chart/s3-fuse-flex-volume
