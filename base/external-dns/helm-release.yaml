@@ -19,3 +19,4 @@ spec:
     aws:
       credentials:
         accessKey: AKIAW4YYMLNFPY4BD76X
+    logLevel: debug
