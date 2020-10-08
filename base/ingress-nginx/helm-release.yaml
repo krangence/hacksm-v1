@@ -29,7 +29,7 @@ spec:
       config:
         global-auth-signin: https://forwardauth.hacksm.net/?uri=$scheme://$host$request_uri
         global-auth-url: https://forwardauth.hacksm.net/verify?uri=$scheme://$host$request_uri
-        use-proxy-protocol: "true"
+        use-proxy-protocol: "false"
         proxy-real-ip-cidr: 192.168.0.0/16
         use-forwarded-headers: "true"
         ssl-redirect: "false"
