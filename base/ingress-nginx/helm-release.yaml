@@ -13,32 +13,11 @@ spec:
   values:
     fullnameOverride: ingress-nginx
     controller:
-      service:
-        annotations:
-          service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
-          service.beta.kubernetes.io/aws-load-balancer-proxy-protocol: "*"
-          service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
-          service.beta.kubernetes.io/aws-load-balancer-ssl-ports: https
-          service.beta.kubernetes.io/aws-load-balancer-ssl-cert: arn:aws:acm:eu-west-2:474108156746:certificate/d71c30a1-40eb-49ea-9ee3-3f386378134a
-          service.beta.kubernetes.io/aws-load-balancer-type: elb
-          service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: '3600'
-        targetPorts:
-          http: tohttps
-          https: http
-      containerPort:
-        http: 80
-        https: 80
-        tohttps: 2443
+      updateStrategy:
+        type: Recreate
       config:
         global-auth-signin: https://forwardauth.hacksm.net/?uri=$scheme://$host$request_uri
         global-auth-url: https://forwardauth.hacksm.net/verify?uri=$scheme://$host$request_uri
-        use-proxy-protocol: "true"
         proxy-real-ip-cidr: 192.168.0.0/16
         use-forwarded-headers: "true"
-        ssl-redirect: "false"
-        proxy-body-size: 32m
-        http-snippet: |
-          server {
-            listen 2443 proxy_protocol;
-            return 307 https://$host$request_uri;
-          }
+        ssl-redirect: "true"

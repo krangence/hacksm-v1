@@ -54,3 +54,7 @@ spec:
             - --enabled-helm-versions=v3
             - --charts-sync-interval=5m
             - --status-update-interval=15m
+          resources:
+            limits:
+              cpu: "500m"
+              memory: "1Gi"

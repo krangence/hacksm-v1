@@ -10,6 +10,12 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
-    - http01:
-        ingress:
-          class: nginx
+      dns01:
+        providers:
+        - name: route53-dns
+          route53:
+            accessKeyID: AKIAW4YYMLNFPKMOL6GO
+            region: us-east-1
+            secretAccessKeySecretRef:
+              name: route53-credentials
+              key: aws-secret-access-key
