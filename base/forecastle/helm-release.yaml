@@ -19,7 +19,7 @@ spec:
         enabled: true
         annotations:
           ingress.pomerium.io/allowed_users: '["matt@matt-white.co.uk"]'
-          cert-manager.io/issuer: "letsencrypt-prod"
+          cert-manager.io/cluster-issuer: "letsencrypt-prod"
         hosts:
           - host: apps.hacksm.net
             paths:
