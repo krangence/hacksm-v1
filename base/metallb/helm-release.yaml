@@ -1,0 +1,19 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: metallb
+spec:
+  releaseName: metallb
+  chart:
+    repository: https://charts.bitnami.com/bitnami
+    name: metallb
+    version: 0.1.24
+  values:
+    configInline:
+      address-pools:
+        - name: default
+          protocol: layer2
+          addresses:
+          - 116.202.189.19
