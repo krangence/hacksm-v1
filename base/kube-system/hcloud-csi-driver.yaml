@@ -25,4 +25,3 @@ spec:
       creationTimestamp: null
       name: hcloud-api-token
       namespace: kube-system
-        
