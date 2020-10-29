@@ -11,7 +11,7 @@ spec:
         - name: flux
           args:
             - --ssh-keygen-dir=/var/fluxd/keygen
-            - --git-url=git@github.com:krangence/k8s-flux.git
+            - --git-url=git@github.com:krangence/hacksm.git
             - --git-email=matt@matt-white.co.uk
             - --git-poll-interval=5m
             - --sync-garbage-collection
