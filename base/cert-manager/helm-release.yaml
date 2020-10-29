@@ -5,13 +5,19 @@ metadata:
   name: cert-manager
   namespace: cert-manager
 spec:
+  releaseName: cert-manager
+  rollback:
+    enable: false
   chart:
-    repository: https://charts.jetstack.io
+    repository: https://charts.jetstack.io/
     name: cert-manager
-    version: 1.0.2
+    version: v1.0.3
   values:
     installCRDs: true
-    ingressShim:
-      defaultIssuerName: "letsencrypt-prod"
-      defaultIssuerKind: "ClusterIssuer"
-      defaultIssuerGroup: "cert-manager.io"
+    webhook:
+      enabled: true
+    extraArgs:
+    - --dns01-recursive-nameservers=9.9.9.9:53
+    - --dns01-recursive-nameservers-only
+    cainjector:
+      replicaCount: 1
