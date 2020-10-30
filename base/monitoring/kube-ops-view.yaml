@@ -16,14 +16,9 @@ spec:
     ingress:
       enabled: true
       hostname: ops.hacksm.net
-      tls:
-      - hosts:
-        - ops.hacksm.net
-        secretName: ops-tls
       annotations:
         forecastle.stakater.com/expose: "true"
         forecastle.stakater.com/appName: "Kube Ops View"
         forecastle.stakater.com/icon: https://codeberg.org/hjacobs/kube-ops-view/raw/branch/main/kube-ops-view-logo.png
         ingress.pomerium.io/allowed_users: '["matt@matt-white.co.uk", "hello@chipwolf.uk"]'
         kubernetes.io/ingress.class: "nginx"
-        kubernetes.io/tls-acme: "true"

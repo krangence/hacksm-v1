@@ -20,12 +20,7 @@ spec:
         annotations:
           ingress.pomerium.io/allowed_users: '["matt@matt-white.co.uk", "hello@chipwolf.uk"]'
           kubernetes.io/ingress.class: "nginx"
-          kubernetes.io/tls-acme: "true"
         hosts:
           - host: apps.hacksm.net
             paths:
               - /
-        tls:
-          - hosts:
-            - apps.hacksm.net
-            secretName: forecastle-tls

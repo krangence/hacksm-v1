@@ -24,7 +24,6 @@ spec:
       type: ClusterIP
     ingress:
       enabled: true
-      certManager: true
       annotations:
         forecastle.stakater.com/expose: "true"
         forecastle.stakater.com/appName: "Ghost"
@@ -36,8 +35,6 @@ spec:
         nginx.org/client-max-body-size: "20m"
       hosts:
         - name: blog.hacksm.net
-          tls: true
-          tlsSecret: ghost-tls
     global:
       storageClass: hcloud-volumes
     mariadb:
