@@ -32,7 +32,8 @@ spec:
         forecastle.stakater.com/group: "HACKSM"
         kubernetes.io/ingress.class: "nginx"
         nginx.ingress.kubernetes.io/enable-global-auth: "false"
-        nginx.ingress.kubernetes.io/client-max-body-size: "20m"
+        nginx.ingress.kubernetes.io/proxy-body-size: "20m"
+        nginx.org/client-max-body-size: "20m"
       hosts:
         - name: blog.hacksm.net
           tls: true
@@ -48,3 +49,8 @@ spec:
         persistence:
           enabled: false
           accessMode: ReadWriteOnce
+    sidecars: 
+      - name: 
+        image: 
+        args: 
+          - 
