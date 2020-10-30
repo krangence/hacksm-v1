@@ -9,15 +9,18 @@ spec:
   chart:
     repository: https://kubernetes.github.io/ingress-nginx/
     name: ingress-nginx
-    version: 3.3.0
+    version: 3.4.1
   values:
     fullnameOverride: ingress-nginx
     controller:
+      admissionWebhooks:
+        enabled: false
+      extraArgs:
+        default-ssl-certificate: "kube-system/acme-crt-secret"
       updateStrategy:
         type: Recreate
       config:
         global-auth-signin: https://forwardauth.hacksm.net/?uri=$scheme://$host$request_uri
         global-auth-url: https://forwardauth.hacksm.net/verify?uri=$scheme://$host$request_uri
-        proxy-real-ip-cidr: 192.168.0.0/16
         use-forwarded-headers: "true"
         ssl-redirect: "true"
