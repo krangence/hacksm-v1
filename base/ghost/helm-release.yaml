@@ -19,7 +19,7 @@ spec:
     ghostPort: 443
     ghostUsername: matt@matt-white.co.uk
     ghostEmail: matt@matt-white.co.uk
-    ghostBlogTitle: Krangence
+    ghostBlogTitle: HACKSM Blog
     service:
       type: ClusterIP
     ingress:
@@ -27,8 +27,9 @@ spec:
       certManager: true
       annotations:
         forecastle.stakater.com/expose: "true"
-        forecastle.stakater.com/appName: "HACKSM"
+        forecastle.stakater.com/appName: "Ghost"
         forecastle.stakater.com/icon: https://avatars1.githubusercontent.com/u/2178663
+        forecastle.stakater.com/group: "HACKSM"
         kubernetes.io/ingress.class: "nginx"
         nginx.ingress.kubernetes.io/enable-global-auth: "false"
         nginx.ingress.kubernetes.io/client-max-body-size: "20m"
