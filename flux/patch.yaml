@@ -17,3 +17,4 @@ spec:
             - --sync-garbage-collection
             - --manifest-generation=true
             - --listen-metrics=:3031
+            - --connect=ws://fluxcloud
