@@ -16,8 +16,15 @@ values:
     annotations:
       forecastle.stakater.com/expose: "true"
       forecastle.stakater.com/appName: "wiki"
-      forecastle.stakater.com/icon: https://avatars0.githubusercontent.com/u/1412239
+      forecastle.stakater.com/icon: https://static.requarks.io/logo/wikijs.svg
       forecastle.stakater.com/group: "HACKSM"
       kubernetes.io/ingress.class: "nginx"
       nginx.ingress.kubernetes.io/enable-global-auth: "false"
-  
+  postgresql:
+    enabled: true
+    postgresqlUser: postgres
+    postgresqlDatabase: wiki
+    presistance:
+      enabled: true
+      accessMode: ReadWriteOnce
+      storageClass: hcloud-volumes
