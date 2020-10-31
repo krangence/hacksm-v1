@@ -1,0 +1,5 @@
+createCRD: false
+chartsSyncInterval: "10m"
+statusUpdateInterval: "10m"
+helm:
+  versions: "v3"
