@@ -14,19 +14,10 @@
       "datasources": ["helm"],
       "managers": ["regex"],
       "packageNames": [
-        "elasticsearch",
-        "filebeat",
-        "kibana",
-        "logstash",
-        "metricbeat"
-      ],
-      "registryUrls": ["https://helm.elastic.co"]
-    },
-    {
-      "datasources": ["helm"],
-      "managers": ["regex"],
-      "packageNames": [
-        "external-dns"
+        "external-dns",
+        "ghost",
+        "nginx",
+        "metallb"
       ],
       "registryUrls": ["https://charts.bitnami.com/bitnami"]
     },
@@ -35,6 +26,27 @@
       "managers": ["regex"],
       "packageNames": ["ingress-nginx"],
       "registryUrls": ["https://kubernetes.github.io/ingress-nginx/"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": ["botkube"],
+      "registryUrls": ["https://infracloudio.github.io/charts"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": ["cert-manager"],
+      "registryUrls": ["https://charts.jetstack.io"]
+    },
+    {
+      "datasources": ["helm"],
+      "managers": ["regex"],
+      "packageNames": [
+        "flux",
+        "helm-operator"
+      ],
+      "registryUrls": ["https://charts.fluxcd.io"]
     },
     {
       "datasources": ["helm"],
