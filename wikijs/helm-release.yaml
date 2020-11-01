@@ -6,7 +6,7 @@ metadata:
   namespace: wiki
 spec:
   chart:
-    git: git@github.com:Requarks/wiki.git
+    git: https://github.com/Requarks/wiki.git
     ref: 2.5.170
     path: dev/helm
 values:
