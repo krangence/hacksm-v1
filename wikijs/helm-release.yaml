@@ -12,7 +12,9 @@ spec:
 values:
   ingress: 
     enabled: true
-    hostname: "wiki.hacksm.net"
+    hosts: 
+      - hosts: "wiki.hacksm.net"
+        path: ["/"]
     annotations:
       forecastle.stakater.com/expose: "true"
       forecastle.stakater.com/appName: "wiki"
