@@ -12,3 +12,5 @@ spec:
   dnsNames:
   - hacksm.net
   - '*.hacksm.net'
+  - matt-white.co.uk
+  - '*.matt-white.co.uk'
