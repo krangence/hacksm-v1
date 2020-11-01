@@ -13,8 +13,8 @@ values:
   ingress: 
     enabled: true
     hosts: 
-      - hosts: "wiki.hacksm.net"
-        path: ["/"]
+      - host: "wiki.hacksm.net"
+        paths: ["/"]
     annotations:
       forecastle.stakater.com/expose: "true"
       forecastle.stakater.com/appName: "wiki"
@@ -23,10 +23,5 @@ values:
       kubernetes.io/ingress.class: "nginx"
       nginx.ingress.kubernetes.io/enable-global-auth: "false"
   postgresql:
-    enabled: true
-    postgresqlUser: postgres
-    postgresqlDatabase: wiki
-    presistance:
-      enabled: true
-      accessMode: ReadWriteOnce
+    persistence:
       storageClass: hcloud-volumes
