@@ -23,4 +23,4 @@ spec:
         global-auth-signin: https://forwardauth.hacksm.net/?uri=$scheme://$host$request_uri
         global-auth-url: https://forwardauth.hacksm.net/verify?uri=$scheme://$host$request_uri
         use-forwarded-headers: "true"
-        ssl-redirect: "true"
+        force-ssl-redirect: "true"
