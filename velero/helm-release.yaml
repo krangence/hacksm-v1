@@ -26,6 +26,7 @@ spec:
       - EnableCSI
       provider: aws
       resticTimeout: 6h
+      defaultVolumesToRestic: true
       volumeSnapshotLocation: 
         name: csi
     deployRestic: true
@@ -39,12 +40,6 @@ spec:
     restic: 
       podVolumePath: /var/lib/kubelet/pods
       privileged: false
-      resources: 
-        limits: 
-          memory: 2000Mi
-        requests: 
-          cpu: 15m
-          memory: 200Mi
     schedules: 
       daily-backup: 
         schedule: "0 6 * * *"
