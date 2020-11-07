@@ -1,0 +1,53 @@
+--- 
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata: 
+  name: velero
+  namespace: velero
+spec: 
+  chart: 
+    name: velero
+    repository: "https://vmware-tanzu.github.io/helm-charts"
+    version: "2.12.13"
+  releaseName: velero
+  valueFileSecrets: 
+  - name: velero-helm-values
+  values: 
+    configuration: 
+      backupStorageLocation: 
+        bucket: velero
+        config: 
+          publicUrl: "https://minio.hacksm.net"
+          region: us-east-1
+          s3ForcePathStyle: true
+          s3Url: "http://minio.default.svc:9000"
+        name: default
+      features: 
+      - EnableCSI
+      provider: aws
+      resticTimeout: 6h
+      volumeSnapshotLocation: 
+        name: csi
+    deployRestic: true
+    initContainers: 
+    - image: "velero/velero-plugin-for-csi:v0.1.2"
+      imagePullPolicy: IfNotPresent
+      name: velero-plugin-for-csi
+      volumeMounts: 
+      - mountPath: /target
+        name: plugins
+    restic: 
+      podVolumePath: /var/lib/kubelet/pods
+      privileged: false
+      resources: 
+        limits: 
+          memory: 2000Mi
+        requests: 
+          cpu: 15m
+          memory: 200Mi
+    schedules: 
+      daily-backup: 
+        schedule: "0 6 * * *"
+        template: 
+          ttl: 120h
+    snapshotsEnabled: false
