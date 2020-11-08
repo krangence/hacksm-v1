@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://charts.bitnami.com/bitnami
     name: nginx
-    version: 7.1.4
+    version: 7.1.6
   values:   
     service:
       type: ClusterIP
