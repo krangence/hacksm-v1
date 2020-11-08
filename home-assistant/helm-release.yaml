@@ -24,6 +24,10 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
+        forecastle.stakater.com/expose: "true"
+        forecastle.stakater.com/appName: "home-assistant"
+        forecastle.stakater.com/icon: https://avatars3.githubusercontent.com/u/13844975
+        forecastle.stakater.com/group: "HACKSM"
         nginx.ingress.kubernetes.io/enable-global-auth: "false"
       hosts:
       - hass.hacksm.net
@@ -44,6 +48,10 @@ spec:
         enabled: true
         annotations:
           kubernetes.io/ingress.class: "nginx"
+          forecastle.stakater.com/expose: "true"
+          forecastle.stakater.com/appName: "code-server"
+          forecastle.stakater.com/icon: https://avatars0.githubusercontent.com/u/40338071
+          forecastle.stakater.com/group: "HACKSM"
           ingress.pomerium.io/allowed_users: '["matt@matt-white.co.uk", "hello@chipwolf.uk"]'
         hosts:
         - hass-vscode.hacksm.net
