@@ -30,7 +30,7 @@ spec:
           region: us-east-1
     deployRestic: true
     initContainers: 
-    - image: "velero/velero-plugin-for-aws:v1.1.0"
+    - image: "velero/velero-plugin-for-aws:v1.1.0@sha256:e52d3545c3c52dbd061f0bf2ae8f7d6b21747d0a8bc64245fb58c8de54df9b33"
       imagePullPolicy: IfNotPresent
       name: velero-plugin-for-aws
       volumeMounts: 
