@@ -22,24 +22,20 @@ spec:
           s3ForcePathStyle: true
           s3Url: "http://minio.default.svc:9000"
         name: default
-      features: 
-      - EnableCSI
       provider: aws
       resticTimeout: 6h
-      defaultVolumesToRestic: true
-      volumeSnapshotLocation: 
-        name: csi
+      volumeSnapshotLocation:
+        name: aws
+        config:
+          region: us-east-1
     deployRestic: true
     initContainers: 
-    - image: "velero/velero-plugin-for-csi:v0.1.2"
+    - image: "velero/velero-plugin-for-aws:v1.1.0"
       imagePullPolicy: IfNotPresent
-      name: velero-plugin-for-csi
+      name: velero-plugin-for-aws
       volumeMounts: 
       - mountPath: /target
         name: plugins
-    restic: 
-      podVolumePath: /var/lib/kubelet/pods
-      privileged: false
     schedules: 
       daily-backup: 
         schedule: "0 6 * * *"
