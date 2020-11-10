@@ -46,8 +46,3 @@ spec:
         persistence:
           enabled: false
           accessMode: ReadWriteOnce
-    sidecars: 
-      - name: 
-        image: 
-        args: 
-          - 
