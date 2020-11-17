@@ -1,0 +1,30 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: wireguard
+  namespace: kube-system
+spec:
+  releaseName: wireguard
+  chart:
+    repository: https://place1.github.io/wg-access-server
+    name: wg-access-server
+    version: v0.3.0
+  valueFrom: 
+    secretKeyRef:
+      name: adminPassword
+      key: adminPassword
+  values: 
+    ingress: 
+      enabled: true
+      hosts: 
+       - vpn.hacksm.net
+      annotations: 
+        forecastle.stakater.com/expose: "true"
+        forecastle.stakater.com/appName: "VPN / Wireguard"
+        forecastle.stakater.com/icon: https://avatars0.githubusercontent.com/u/13991055
+        forecastle.stakater.com/group: "HACKSM"
+        kubernetes.io/ingress.class: "nginx"
+      web: 
+        config:
+          adminUsername: HackAdmin
