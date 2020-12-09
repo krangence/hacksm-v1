@@ -1,0 +1,16 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: postgressql
+  namespace: database
+spec:
+  releaseName: postgresql
+  chart:
+    repository: https://charts.bitnami.com/bitnami
+    name: postgres
+    version: 10.2.1
+  values: 
+    persistence:
+      storageClass: hcloud-volumes
+    postgresqlPassword: Password123!
