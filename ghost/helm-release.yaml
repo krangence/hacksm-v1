@@ -9,7 +9,7 @@ spec:
   chart:
     repository: https://charts.bitnami.com/bitnami
     name: ghost
-    version: 10.2.1
+    version: 10.2.3
   valuesFrom:
   - secretKeyRef:
       name: ghost-helm-values
