@@ -7,7 +7,7 @@ metadata:
 spec:
   chart:
     git: git@github.com:linuxserver/docker-wikijs.git
-    tag: version-2.5.170
+    tag: 2.5.170-ls17
     path: root/defaults/
 values:
   ingress: 
