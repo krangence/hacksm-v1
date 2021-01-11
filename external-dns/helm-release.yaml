@@ -14,7 +14,7 @@ spec:
     - secretKeyRef:
         name: external-dns-values
   values:
-    domainFilters: ["hacksm.net", "matt-white.co.uk"]
+    domainFilters: ["hacksm.net", "matt-white.co.uk", "nitetech.co.uk"]
     policy: sync
     aws:
       credentials:

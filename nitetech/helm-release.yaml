@@ -1,0 +1,30 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nitetech
+  namespace: nitetech
+spec:
+  releaseName: nitetech
+  chart:
+    repository: https://charts.bitnami.com/bitnami
+    name: nginx
+    version: 7.1.4
+  values:   
+    service:
+      type: ClusterIP
+    cloneStaticSiteFromGit:
+      enabled: true
+      repository: "https://github.com/krangence/nitetech.co.uk.git"
+      branch: "main"
+    ingress: 
+      enabled: true
+      annotations:
+        forecastle.stakater.com/expose: "true"
+        forecastle.stakater.com/appName: "nitetech.co.uk"
+        forecastle.stakater.com/icon: https://avatars0.githubusercontent.com/u/1412239
+        forecastle.stakater.com/group: "HACKSM"
+        kubernetes.io/ingress.class: "nginx"
+        nginx.ingress.kubernetes.io/enable-global-auth: "false"
+      hostname: "nitetech.co.uk"
+    
