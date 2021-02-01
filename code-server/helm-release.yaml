@@ -7,7 +7,7 @@ metadata:
 spec:
   releaseName: code-server
   chart: 
-    git: git@github.com:cdr/code-server.git
+    git: https://github.com/cdr/code-server.git
     tag: v3.8.0
     path: ci/helm-chart
 values:
