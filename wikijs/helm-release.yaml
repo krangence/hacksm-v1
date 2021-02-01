@@ -6,7 +6,7 @@ metadata:
   namespace: wiki
 spec:
   chart:
-    git: git@github.com:linuxserver/docker-wikijs.git
+    git: https://github.com/linuxserver/docker-wikijs.git
     tag: 2.5.170-ls17
     path: root/defaults/
 values:
