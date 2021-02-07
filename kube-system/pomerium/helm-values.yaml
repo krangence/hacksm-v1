@@ -1,0 +1,11 @@
+---
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: pomerium-helm-values
+  namespace: default
+spec:
+  keys:
+    - values.yaml
+  path: secrets/default/pomerium/helm-values
+  type: Opaque

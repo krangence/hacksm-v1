@@ -1,0 +1,28 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: external-dns
+  namespace: default
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: external-dns
+      version: 4.6.0
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-charts
+        namespace: flux-system
+      interval: 5m
+  valuesFrom:
+  - kind: Secret
+    name: external-dns-values
+    optional: false
+  values:
+    domainFilters: ["hacksm.net", "matt-white.co.uk", "nitetech.co.uk"]
+    policy: sync
+    aws:
+      credentials:
+        accessKey: AKIAW4YYMLNFPY4BD76X
+    txtPrefix: hacksm

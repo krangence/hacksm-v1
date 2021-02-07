@@ -1,0 +1,11 @@
+---
+apiVersion: ricoberger.de/v1alpha1
+kind: VaultSecret
+metadata:
+  name: route53-credentials
+  namespace: cert-manager
+spec:
+  keys:
+    - aws-secret-access-key
+  path: secrets/cert-manager/route53-credentials
+  type: Opaque

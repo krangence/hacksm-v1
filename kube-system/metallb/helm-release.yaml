@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: metallb
+  namespace: kube-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: metallb
+      version: 1.1.0
+      sourceRef:
+        kind: HelmRepository
+        name: bitnami-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    configInline:
+      address-pools:
+        - name: default
+          protocol: layer2
+          addresses:
+          - 116.202.189.19
+   # prometheusRule:
+   #   enabled: true
+   # prometheus:
+   #   enabled: true
+   #   serviceMonitor:
+   #     enabled: true
+   #   prometheusRule:
+   #     enabled: true
+    controller:
+      image:
+        registry: docker.io
+        repository: metallb/controller
+        tag: v0.9.5
+    speaker:
+      image:
+        registry: docker.io
+        repository: metallb/speaker
+        tag: v0.9.5

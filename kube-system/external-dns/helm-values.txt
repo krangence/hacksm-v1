@@ -1,0 +1,3 @@
+aws:
+  credentials:
+    secretKey: "$EXTERNAL_DNS_SECRET_ACCESS_KEY"
