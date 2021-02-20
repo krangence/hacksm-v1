@@ -7,3 +7,4 @@ authenticate:
     clientID: "$POMERIUM_CLIENT_ID"
     clientSecret: "$POMERIUM_CLIENT_SECRET"
     serviceAccount: "$POMERIUM_SERVICE_ACCOUNT"
+    url: "https://hacksm.eu.auth0.com"
