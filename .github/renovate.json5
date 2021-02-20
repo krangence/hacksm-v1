@@ -2,9 +2,10 @@
   enabled: true,
   timezone: "UTC",
   dependencyDashboard: true,
-  dependencyDashboardTitle: "Renovate Dashboard",
+  dependencyDashboardAutoclose: true,
   commitMessageSuffix: "[ci-skip]",
   commitBody: "Signed-off-by: Matt White <krangence@users.noreply.github.com>",
+  includeForks: true;
   // Do not notify on closed unmerged PRs
   suppressNotifications: ["prIgnoreNotification"],
   // Do not rebase PRs
@@ -40,6 +41,11 @@
       updateTypes: ["major", "minor", "patch"],
       enabled: true,
       separateMinorPatch: true,
+    },
+    // Automerge updates
+    {
+      matchUpdateTypes: ["minor", "patch", "pin", "digest"],
+      automerge: true,
     },
     // Add labels according to package and update types
     {
