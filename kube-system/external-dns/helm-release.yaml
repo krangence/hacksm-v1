@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: external-dns
-  namespace: default
+  namespace: kube-system
 spec:
   interval: 5m
   chart:
@@ -17,7 +17,7 @@ spec:
       interval: 5m
   valuesFrom:
   - kind: Secret
-    name: external-dns-values
+    name: external-dns-helm-values
     optional: false
   values:
     domainFilters: ["hacksm.net", "matt-white.co.uk", "nitetech.co.uk"]
