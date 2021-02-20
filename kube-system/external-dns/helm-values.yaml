@@ -3,9 +3,9 @@ apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
   name: external-dns-helm-values
-  namespace: default
+  namespace: kube-system
 spec:
   keys:
     - values.yaml
-  path: secrets/default/external-dns/helm-values
+  path: secrets/kube-system/external-dns/helm-values
   type: Opaque

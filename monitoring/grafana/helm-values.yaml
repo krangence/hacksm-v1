@@ -7,5 +7,5 @@ metadata:
 spec:
   keys:
     - values.yaml
-  path: secrets/monitoring/grafana/grafana-helm-values
+  path: secrets/monitoring/grafana/helm-values
   type: Opaque

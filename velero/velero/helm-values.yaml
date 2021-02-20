@@ -7,5 +7,5 @@ metadata:
 spec:
   keys:
     - values.yaml
-  path: secrets/velero/velero/velero-helm-values
+  path: secrets/velero/velero/helm-values
   type: Opaque

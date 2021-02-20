@@ -7,5 +7,5 @@ metadata:
 spec:
   keys:
     - values.yaml
-  path: secrets/monitoring/kube-prometheus-stack/kube-prometheus-stack-helm-values
+  path: secrets/monitoring/kube-prometheus-stack/helm-values
   type: Opaque

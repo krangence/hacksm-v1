@@ -3,9 +3,9 @@ apiVersion: ricoberger.de/v1alpha1
 kind: VaultSecret
 metadata:
   name: pomerium-helm-values
-  namespace: default
+  namespace: kube-system
 spec:
   keys:
     - values.yaml
-  path: secrets/default/pomerium/helm-values
+  path: secrets/kube-system/pomerium/helm-values
   type: Opaque

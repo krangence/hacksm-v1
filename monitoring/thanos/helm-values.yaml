@@ -7,5 +7,5 @@ metadata:
 spec:
   keys:
     - values.yaml
-  path: secrets/monitoring/thanos/thanos-helm-values
+  path: secrets/monitoring/thanos/helm-values
   type: Opaque
