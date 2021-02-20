@@ -1,0 +1,142 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: monitoring
+spec:
+  interval: 5m
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  chart:
+    spec:
+      # renovate: registryUrl=https://prometheus-community.github.io/helm-charts
+      chart: kube-prometheus-stack
+      version: 13.10.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community-charts
+        namespace: flux-system
+      interval: 5m
+  timeout: 20m
+  values:
+    server:
+      resources:
+        requests:
+          memory: 1500Mi
+          cpu: 25m
+        limits:
+          memory: 2000Mi
+    prometheusOperator:
+      createCustomResource: true
+      configReloaderCpu: 200m
+    alertmanager:
+      alertmanagerSpec:
+        storage:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: local-path
+              resources:
+                requests:
+                  storage: 10Gi
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.hacksm.net/oauth2/auth"
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.hacksm.net/oauth2/start
+        hosts: [prom-alert.hacksm.net]
+        tls:
+          - hosts:
+              - prom-alert.hacksm.net
+      config:
+        global:
+          resolve_timeout: 5m
+        route:
+          receiver: "slack-notifications"
+          routes:
+            - match:
+                alertname: Watchdog
+              receiver: "null"
+            - receiver: "slack-notifications"
+              match:
+                severity: critical
+              continue: true
+            - receiver: "slack-notifications"
+        inhibit_rules:
+          - source_match:
+              severity: "critical"
+            target_match:
+              severity: "warning"
+            # Apply inhibition if the alertname is the same.
+            equal: ["alertname", "namespace"]
+        templates: ["*.tmpl"]
+    nodeExporter:
+      serviceMonitor:
+        relabelings:
+          - sourceLabels: [__meta_kubernetes_pod_node_name]
+            targetLabel: nodename
+            action: replace
+    grafana:
+      enabled: false
+    kubeEtcd:
+      enabled: false
+    kubeControllerManager:
+      enabled: false
+    kubeScheduler:
+      enabled: false
+    kubeProxy:
+      enabled: false
+    prometheus-node-exporter:
+      tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Exists"
+    prometheus:
+      ingress:
+        enabled: true
+        annotations:
+          kubernetes.io/ingress.class: "nginx"
+          nginx.ingress.kubernetes.io/auth-url: "https://auth.hacksm.net/oauth2/auth"
+          nginx.ingress.kubernetes.io/auth-signin: https://auth.hacksm.net/oauth2/start
+        hosts: [prom-server.hacksm.net]
+        tls:
+          - hosts:
+              - prom-server.hacksm.net
+      prometheusSpec:
+        externalLabels:
+          cluster: "default"
+        replicas: 1
+        replicaExternalLabelName: "replica"
+        ruleSelector: {}
+        ruleNamespaceSelector: {}
+        ruleSelectorNilUsesHelmValues: false
+        serviceMonitorSelector: {}
+        serviceMonitorNamespaceSelector: {}
+        serviceMonitorSelectorNilUsesHelmValues: false
+        podMonitorSelector: {}
+        podMonitorNamespaceSelector: {}
+        podMonitorSelectorNilUsesHelmValues: false
+        retention: 6h
+        enableAdminAPI: true
+        walCompression: true
+        storageSpec:
+          volumeClaimTemplate:
+            spec:
+              storageClassName: local-path
+              resources:
+                requests:
+                  storage: 10Gi
+        thanos:
+          image: quay.io/thanos/thanos:v0.18.0
+          version: v0.17.0
+          objectStorageConfig:
+            name: thanos
+            key: object-store.yaml
+  valuesFrom:
+    - kind: Secret
+      name: "kube-prometheus-stack-helm-values"
+      optional: false

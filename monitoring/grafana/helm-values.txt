@@ -1,0 +1,4 @@
+adminPassword: "$GRAFANA_PASSWORD"
+grafana.ini:
+  auth.anonymous:
+    enabled: true
