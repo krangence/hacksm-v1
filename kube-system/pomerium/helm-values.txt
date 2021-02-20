@@ -3,7 +3,7 @@ config:
   cookieSecret: "$POMERIUM_COOKIE_SECRET"
 authenticate:
   idp:
-    provider: github
+    provider: auth0
     clientID: "$POMERIUM_CLIENT_ID"
     clientSecret: "$POMERIUM_CLIENT_SECRET"
     serviceAccount: "$POMERIUM_SERVICE_ACCOUNT"
