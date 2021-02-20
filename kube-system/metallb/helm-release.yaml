@@ -21,7 +21,7 @@ spec:
         - name: default
           protocol: layer2
           addresses:
-          - 116.202.189.19
+          - 116.202.189.19/32
    # prometheusRule:
    #   enabled: true
    # prometheus:
