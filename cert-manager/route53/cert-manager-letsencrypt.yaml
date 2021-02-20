@@ -1,0 +1,60 @@
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-test
+spec:
+  acme:
+    email: matt@matt-white.co.uk
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-test
+    solvers:
+      # An empty 'selector' means that this solver matches all domains
+      - selector: {}
+        dns01:
+          route53:
+            accessKeyID: AKIAW4YYMLNFPKMOL6GO
+            region: us-east-1
+            secretAccessKeySecretRef:
+              name: route53-credentials
+              key: aws-secret-access-key
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    email: matt@matt-white.co.uk
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    solvers:
+      # An empty 'selector' means that this solver matches all domains
+      - selector: {}
+        dns01:
+          route53:
+            accessKeyID: AKIAW4YYMLNFPKMOL6GO
+            region: us-east-1
+            secretAccessKeySecretRef:
+              name: route53-credentials
+              key: aws-secret-access-key
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: acme-crt
+  namespace: cert-manager
+spec:
+  secretName: acme-crt-secret
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - hacksm.net
+    - "*.hacksm.net"
+    - matt-white.co.uk
+    - "*.matt-white.co.uk"
+    - nitetech.co.uk
+    - "*.nitetech.co.uk"
