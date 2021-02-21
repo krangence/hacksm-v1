@@ -1,18 +1,24 @@
 # kube-system
 
-## metallb
-
-[Run your own on-prem LoadBalancer](https://metallb.universe.tf/)
-
-* [metallb/metallb.yaml](metallb/metallb.yaml)
-
 ## ingress-nginx
 
 ![](https://i.imgur.com/b21MHEE.png)
 
 ingress-nginx controller leveraging cert-manager as the central cert store for the wildcard certificate
 
-* [nginx/](nginx/)
+* [ingress-nginx/](ingress-nginx/)
+
+## metallb
+
+[Run your own on-prem LoadBalancer](https://metallb.universe.tf/)
+
+* [metallb/metallb.yaml](metallb/metallb.yaml)
+
+## oauth2-proxy
+
+[OAuth2 authenticating proxy](https://github.com/pusher/oauth2_proxy) leveraging Auth0
+
+* [oauth2-proxy/](oauth2-proxy/)
 
 ## vault
 

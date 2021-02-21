@@ -1,0 +1,42 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: oauth2-proxy
+  namespace: kube-system
+spec:
+  interval: 5m
+  chart:
+    spec:
+      # renovate: registryUrl=https://oauth2-proxy.github.io/manifests
+      chart: oauth2-proxy
+      version: 3.2.6
+      sourceRef:
+        kind: HelmRepository
+        name: oauth2-proxy-charts
+        namespace: flux-system
+      interval: 5m
+  values:
+    image:
+      repository: "quay.io/oauth2-proxy/oauth2-proxy"
+      tag: "v7.0.1"
+    replicaCount: 1
+    ingress:
+      enabled: true
+      path: /oauth2
+      hosts: [auth.hacksm.net]
+      tls:
+      - hosts:
+        - auth.hacksm.net
+    extraArgs:
+      provider: oidc
+      oidc-issuer-url: https://hacksm.eu.auth0.com/
+      skip-provider-button:
+      pass-authorization-header:
+      email-domain: "*"
+      cookie-domain: .hacksm.net
+      whitelist-domain: .hacksm.net
+  valuesFrom:
+  - kind: Secret
+    name: "oauth2-proxy-helm-values"
+    optional: false

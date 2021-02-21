@@ -40,7 +40,7 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
-        ingress.pomerium.io/allowed_users: '["matt@matt-white.co.uk"]'
+        nginx.ingress.kubernetes.io/enable-global-auth: "false"
       hosts: [grafana.hacksm.net]
       tls:
         - hosts:
