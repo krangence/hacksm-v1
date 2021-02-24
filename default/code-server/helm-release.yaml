@@ -20,7 +20,7 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx
-        kubernetes.io/tls-acme: "true"
+        nginx.ingress.kubernetes.io/enable-global-auth: "false"
       hosts:
         - host: code.hacksm.net
           paths:
