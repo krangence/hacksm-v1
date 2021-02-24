@@ -20,7 +20,9 @@ spec:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx
-        nginx.ingress.kubernetes.io/enable-global-auth: "false"
+        #nginx.ingress.kubernetes.io/enable-global-auth: "false"
+        nginx.ingress.kubernetes.io/auth-url: "https://auth.hacksm.net/oauth2/auth"
+        nginx.ingress.kubernetes.io/auth-signin: https://auth.hacksm.net/oauth2/start
       hosts:
         - host: code.hacksm.net
           paths:
