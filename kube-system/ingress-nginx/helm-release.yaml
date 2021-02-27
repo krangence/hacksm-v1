@@ -30,7 +30,7 @@ spec:
         hsts-max-age: "31449600"
         global-auth-url: "https://auth.hacksm.net/oauth2/auth"
         global-auth-signin: "https://auth.hacksm.net/oauth2/start"
-        use-forwarded-headers: "true"
+      use-forwarded-headers: "true"
       service:
         externalTrafficPolicy: Local
       metrics:
