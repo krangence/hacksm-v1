@@ -10,10 +10,10 @@ spec:
     spec:
       # renovate: registryUrl=https://oauth2-proxy.github.io/manifests
       chart: oauth2-proxy
-      version: 3.2.6
+      version: 3.2.5
       sourceRef:
         kind: HelmRepository
-        name: oauth2-proxy-charts
+        name: kubernetes-stable-charts
         namespace: flux-system
       interval: 5m
   values:
