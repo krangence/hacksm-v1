@@ -23,8 +23,6 @@ spec:
     replicaCount: 1
     ingress:
       enabled: true
-      annotations:
-        nginx.ingress.kubernetes.io/enable-global-auth: "false"
       path: /oauth2
       hosts: [auth.hacksm.net]
       tls:
