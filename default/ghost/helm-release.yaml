@@ -44,11 +44,10 @@ spec:
     global:
       storageClass: hcloud-volumes
     mariadb:
-      rootUser:
+      auth:
+        rootPassword: "password"
         password: "password"
-      db:
-        password: "password"
-      master:
+      primary:
         persistence:
           enabled: false
           accessMode: ReadWriteOnce
