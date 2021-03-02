@@ -36,6 +36,8 @@ spec:
       config:
         enabled: true
         storageClass: hcloud-volumes
+        accessMode: ReadWriteMany
       data:
         enabled: true
         storageClass: hcloud-volumes
+        accessMode: ReadWriteMany
