@@ -51,7 +51,7 @@ spec:
     nasgateway:
       enabled: true
       # Number of parallel instances
-      replicas: 3
+      replicas: 1
   valuesFrom:
   - kind: Secret
     name: "minio-helm-values"
