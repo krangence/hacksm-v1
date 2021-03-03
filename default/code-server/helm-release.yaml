@@ -33,7 +33,8 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass: hcloud-volumes
+        existingClaim: hetzner-data-pvc
+        mountPath: codeserver
 #    extraContainers:
 #    - env:
 #      - name: GIT_SYNC_REPO

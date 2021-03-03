@@ -39,11 +39,16 @@ spec:
       tls: true
     global:
       storageClass: hcloud-volumes
+    persistence: 
+      enable: true
+      existingClaim: hetzner-data-pvc
+      path: ghost
     mariadb:
       auth:
         rootPassword: "password"
         password: "password"
       primary:
         persistence:
-          enabled: false
-          accessMode: ReadWriteOnce
+          enabled: true
+          existingClaim: hetzner-data-pvc
+          subPath: ghostdb

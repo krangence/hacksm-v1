@@ -35,9 +35,10 @@ spec:
     persistence:
       config:
         enabled: true
-        storageClass: hcloud-volumes
-        accessMode: ReadWriteMany
+        existingClaim: hetzner-data-pvc
+        mountPath: wikijsconfig
       data:
         enabled: true
-        storageClass: hcloud-volumes
-        accessMode: ReadWriteMany
+        existingClaim: hetzner-data-pvc
+        mountPath: wikijsdata
+        
