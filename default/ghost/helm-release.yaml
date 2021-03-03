@@ -37,8 +37,6 @@ spec:
         nginx.org/client-max-body-size: "20m"
       hostname: blog.hacksm.net
       tls: true
-    global:
-      storageClass: hcloud-volumes
     persistence: 
       enable: true
       existingClaim: cifs-data-pvc
