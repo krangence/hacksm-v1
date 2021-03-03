@@ -31,16 +31,12 @@ spec:
     ingress:
       enabled: true
       annotations:
-        forecastle.stakater.com/expose: "true"
-        forecastle.stakater.com/appName: "Ghost"
-        forecastle.stakater.com/icon: https://avatars1.githubusercontent.com/u/2178663
-        forecastle.stakater.com/group: "HACKSM"
         kubernetes.io/ingress.class: "nginx"
         nginx.ingress.kubernetes.io/enable-global-auth: "false"
         nginx.ingress.kubernetes.io/proxy-body-size: "20m"
         nginx.org/client-max-body-size: "20m"
-      hosts:
-        - name: blog.hacksm.net
+      hostname: blog.hacksm.net
+      tls: true
     global:
       storageClass: hcloud-volumes
     mariadb:
