@@ -26,8 +26,8 @@ spec:
       repository: drnic/kubectl
       tag: 1.16
     persistence:
-      size: 80Gi
-      storageClass: hcloud-volumes
+      existingClaim: cifs-data-pvc
+      subPath: minio
     ingress:
       enabled: true
       annotations:

@@ -169,6 +169,7 @@ loadSecretsToVault() {
   message "writing secrets to vault"
   #vault kv put secrets/flux-system/discord-webhook address="$DISCORD_FLUX_WEBHOOK_URL"
   vault kv put secrets/cert-manager/route53-credentials aws-secret-access-key="$R53_SECRET_ACCESS_KEY"
+  vault kv put secrets/kube-system/cifs username="$HETZNER_STORAGE_BOX_USERNAME" password="$HETZNER_STORAGE_BOX_PASSWORD"
   vault kv put secrets/flux-system/discord-webhook address="$DISCORD_FLUX_WEBHOOK_URL"
 
   ####################
