@@ -33,7 +33,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: hetzner-data-pvc
+        existingClaim: cifs-data-pvc
         mountPath: codeserver
 #    extraContainers:
 #    - env:

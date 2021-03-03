@@ -41,7 +41,7 @@ spec:
       storageClass: hcloud-volumes
     persistence: 
       enable: true
-      existingClaim: hetzner-data-pvc
+      existingClaim: cifs-data-pvc
       path: ghost
     mariadb:
       auth:
@@ -50,5 +50,5 @@ spec:
       primary:
         persistence:
           enabled: true
-          existingClaim: hetzner-data-pvc
+          existingClaim: cifs-data-pvc
           subPath: ghostdb

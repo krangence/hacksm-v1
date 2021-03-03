@@ -35,10 +35,10 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: hetzner-data-pvc
+        existingClaim: cifs-data-pvc
         mountPath: wikijsconfig
       data:
         enabled: true
-        existingClaim: hetzner-data-pvc
+        existingClaim: cifs-data-pvc
         mountPath: wikijsdata
         
