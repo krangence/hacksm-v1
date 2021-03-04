@@ -36,9 +36,9 @@ spec:
       config:
         enabled: true
         existingClaim: cifs-data-pvc
-        mountPath: wikijsconfig
+        mountPath: /wikijsconfig
       data:
         enabled: true
         existingClaim: cifs-data-pvc
-        mountPath: wikijsdata
+        mountPath: /wikijsdata
         
