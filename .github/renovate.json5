@@ -6,7 +6,7 @@
   requiredStatusChecks: null,
   commitMessageSuffix: "[ci-skip]",
   commitBody: "Signed-off-by: Matt White <krangence@users.noreply.github.com>",
-  includeForks: true;
+  includeForks: true,
   // Do not notify on closed unmerged PRs
   suppressNotifications: ["prIgnoreNotification"],
   // Do not rebase PRs
