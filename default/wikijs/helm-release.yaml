@@ -41,7 +41,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: cifs-data-pvc
+        storageClass: hcloud-volumes
         mountPath: /wikijsconfig
       data:
         enabled: true
