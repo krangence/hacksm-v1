@@ -7,9 +7,7 @@
   "commitMessageSuffix": "[ci-skip]",
   "commitBody": "Signed-off-by: Matt White <krangence@users.noreply.github.com>",
   "includeForks": true,
-  // Do not notify on closed unmerged PRs
   "suppressNotifications": ["prIgnoreNotification"],
-  // Do not rebase PRs
   "rebaseWhen": "conflicted",
   "assignees": ["@krangence"],
   "helm-values": {
@@ -29,7 +27,6 @@
     }
   ],
   "packageRules": [
-    // Setup datasources
     {
       "datasources": ["helm"],
       "commitMessageTopic": "Helm chart {{depName}}",
@@ -43,12 +40,10 @@
       "enabled": true,
       "separateMinorPatch": true
     },
-    // Automerge updates
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
     },
-    // Add labels according to package and update types
     {
       "datasources": ["docker"],
       "updateTypes": ["major"],
