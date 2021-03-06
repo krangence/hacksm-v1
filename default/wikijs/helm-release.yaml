@@ -22,6 +22,9 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    image:
+      repository: ghcr.io/linuxserver/wikijs
+      tag: "2.5.170-ls24"
     env:
       TZ: "Europe/London"
     ingress: 
@@ -42,7 +45,6 @@ spec:
       config:
         enabled: true
         storageClass: hcloud-volumes
-        mountPath: /wikijsconfig
       data:
         enabled: true
         existingClaim: cifs-data-pvc
