@@ -22,18 +22,31 @@ spec:
         namespace: flux-system
       interval: 5m
   values:
+    podSecurityContext:
+      fsGroup: 911
+    initContainers:
+      - name: take-data-dir-ownership
+        image: alpine:3
+        command:
+          - chown
+          - -R
+          - 911:911
+          - /data
+        volumeMounts:
+          - name: data
+            mountPath: /data
     image:
-      repository: ghcr.io/linuxserver/wikijs
-      tag: "2.5.170-ls24"
+      repository: lspipepr/wikijs
+      tag: "2.5.170-pkg-2428a141-pr-12"
     env:
       TZ: "Europe/London"
-    ingress: 
+    ingress:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: "nginx"
         #nginx.ingress.kubernetes.io/auth-url: "https://auth.hacksm.net/oauth2/auth"
         #nginx.ingress.kubernetes.io/auth-signin: https://auth.hacksm.net/oauth2/start
-      hosts: 
+      hosts:
         - host: wiki.hacksm.net
           paths:
             - path: /
@@ -47,4 +60,4 @@ spec:
         storageClass: hcloud-volumes
       data:
         enabled: true
-        existingClaim: cifs-wiki-pvc
+        existingClaim: cifs-data-pvc
