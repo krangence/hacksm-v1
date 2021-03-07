@@ -48,5 +48,3 @@ spec:
       data:
         enabled: true
         existingClaim: cifs-data-pvc
-        mountPath: /wikijsdata
-        
