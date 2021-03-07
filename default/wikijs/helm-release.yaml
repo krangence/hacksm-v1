@@ -47,4 +47,4 @@ spec:
         storageClass: hcloud-volumes
       data:
         enabled: true
-        existingClaim: cifs-data-pvc
+        existingClaim: cifs-wiki-pvc
