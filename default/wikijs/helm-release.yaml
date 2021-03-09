@@ -26,8 +26,8 @@ spec:
       repository: ghcr.io/linuxserver/wikijs
       tag: "2.5.170-ls24"
     env:
-      PUID: "0"
-      GUID: "0"
+      PUID: "1000"
+      PGID: "2000"
       TZ: "Europe/London"
     ingress: 
       enabled: true
@@ -49,4 +49,4 @@ spec:
         storageClass: hcloud-volumes
       data:
         enabled: true
-        storageClass: hcloud-volumes
+        existingClaim: cifs-data-pvc
