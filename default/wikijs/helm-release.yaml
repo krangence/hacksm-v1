@@ -26,7 +26,7 @@ spec:
       fsGroup: 911
     initContainers:
       - name: take-data-dir-ownership
-        image: alpine:3
+        image: alpine:20210212
         command:
           - chown
           - -R
