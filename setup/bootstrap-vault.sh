@@ -182,6 +182,7 @@ loadSecretsToVault() {
   kvault "monitoring/grafana/helm-values.txt"
   kvault "monitoring/kube-prometheus-stack/helm-values.txt"
   kvault "monitoring/thanos/helm-values.txt"
+  kvault "monitoring/uptimerobot/uptimerobot-helm-values.txt"
   kvault "velero/velero/helm-values.txt"
 }
 

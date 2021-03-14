@@ -89,6 +89,9 @@ spec:
         prometheus-exporter-summary:
           url: https://raw.githubusercontent.com/krangence/hacksm/master/monitoring/grafana/dashboards/prometheus_exporter_summary.json
           datasource: Prometheus
+        uptimerobot:
+          url: https://raw.githubusercontent.com/lekpamartin/uptimerobot_exporter/master/dashboards/grafana.json
+          datasource: Prometheus
         velero:
           url: https://grafana.com/api/dashboards/11055/revisions/2/download
           datasource: Prometheus
