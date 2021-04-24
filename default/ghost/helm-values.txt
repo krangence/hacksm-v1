@@ -1,1 +1,0 @@
-ghostPassword: "$GHOST_PASSWORD"
