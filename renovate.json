@@ -29,16 +29,14 @@
   "packageRules": [
     {
       "datasources": ["helm"],
-      "commitMessageTopic": "Helm chart {{depName}}",
-      "separateMinorPatch": true
+      "commitMessageTopic": "Helm chart {{depName}}"
     },
     {
       "datasources": ["docker"],
       "commitMessageTopic": "Docker image {{depName}}",
       "commitMessageExtra": "to {{#if isSingleVersion}}v{{{toVersion}}}{{else}}{{{newValue}}}{{/if}}",
       "updateTypes": ["major", "minor", "patch"],
-      "enabled": true,
-      "separateMinorPatch": true
+      "enabled": true
     },
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
