@@ -15,6 +15,7 @@ spec:
         name: bitnami-charts
         namespace: flux-system
       interval: 5m
+      replicaCount: 0
   values:   
     service:
       type: ClusterIP
